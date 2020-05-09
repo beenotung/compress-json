@@ -107,11 +107,11 @@ let compressed = [
     'a|K|L|M',
     'o|G|H|I|5|J|N|6|7|8|9', // object
     'escape',
-    's|s|str', // string (escaped)
-    's|n|123',
+    's|s|str', // escaped string
+    's|n|123', // escaped number
     's|o|1',
     's|a|1',
-    's|b|T',
+    's|b|T', // escaped boolean
     's|b|F',
     'a|Q|R|S|T|U|V',
     'o|0|1|2|3|4|5|6|7|8|9|A|B|C|E|F|O|P|W'
