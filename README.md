@@ -10,6 +10,17 @@ This library is optimized to reduce represent json object in compact format, whi
 It is not optimized for writing nor querying throughput.
 Although the reduced IO may speed up usage of lmdb on frequently redundant data, that is not the design goal.
 
+## Features
+- Object key order is preserved
+- Repeated values are stored only once
+- Numbers are encoded in base62 format (0-9A-Za-z)
+- Support multiple storage backend
+    - in-memory object / array / Map
+    - localStorage
+    - lmdb
+    - leveldb (sync mode)
+    - custom adapter
+
 ## Installation
 ```bash
 npm i -S compress-json
