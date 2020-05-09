@@ -1,6 +1,6 @@
 {
   "name": "compress-json",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "",
   "keywords": [],
   "author": {
@@ -39,7 +39,9 @@
   },
   "devDependencies": {
     "@types/node": "*",
+    "compressed-json": "^1.0.15",
     "husky": "^4.2.5",
+    "jsonpack": "^1.1.5",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
     "ts-node": "^8.10.1",

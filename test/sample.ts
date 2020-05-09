@@ -1,7 +1,7 @@
 export function sample() {
-  let longStr = 'A very very long string, that is repeated'
-  let longNum = 9876543210.123456
-  let sparse = []
+  const longStr = 'A very very long string, that is repeated'
+  const longNum = 9876543210.123456
+  const sparse = []
   sparse[10] = 1
   return {
     rich: {
@@ -19,14 +19,7 @@ export function sample() {
         longStr,
         longNum,
       },
-      escape: [
-        's|str',
-        'n|123',
-        'o|1',
-        'a|1',
-        'b|T',
-        'b|F',
-      ],
+      escape: ['s|str', 'n|123', 'o|1', 'a|1', 'b|T', 'b|F'],
     },
     conflict: {
       str: '1',

@@ -1,9 +1,9 @@
 #!/usr/bin/env ts-node
-import fs from 'fs'
-import path from 'path'
 import { jsonToString } from '@beenotung/tslib/json'
 import { startTimer } from '@beenotung/tslib/node'
-import { compress, decompress } from './compress/core'
+import fs from 'fs'
+import path from 'path'
+import { compress, decompress } from '../src/core'
 
 const timer = startTimer('load test data')
 
@@ -19,9 +19,9 @@ function toString(data: any) {
 }
 
 function save(name: string, data: any) {
-  let file = path.join('data', 'json', name + '.json')
+  const file = path.join('data', name + '.json')
   timer.next('save ' + file)
-  let text = JSON.stringify(data)
+  const text = typeof data === 'string' ? data : JSON.stringify(data)
   // let text = JSON.stringify(data, null, 2)
   fs.writeFileSync(file, text)
 }
@@ -29,27 +29,29 @@ function save(name: string, data: any) {
 import { readJsonFileSync } from '@beenotung/tslib/fs'
 
 let input = readJsonFileSync('data.json')
-// let sample = 50000
-// sample = 3
-// sample = 100
-// input = Object.fromEntries(Object.entries(input).splice(0, sample))
+let sample = 100000
+sample = 50000
+sample = 10000
+sample = 2000
+sample = 1000
+sample = 100
+sample = 10
+input = Object.fromEntries(Object.entries(input).splice(0, sample))
 
 // import { sample } from './compress/test'
 // let input = sample()
 
 // let input = JSON.parse(fs.readFileSync('sample.txt').toString());
 
-save('input', input)
-
 timer.next('prepare json string')
-let inputStr = JSON.stringify(input)
+const inputStr = JSON.stringify(input)
 let inputStrSorted: string // =  toString(input)
 
 function compare(name: string, input: any, reverse: any) {
   if (!inputStrSorted) {
     inputStrSorted = toString(input)
   }
-  let reverseStrSorted = toString(reverse)
+  const reverseStrSorted = toString(reverse)
   if (inputStrSorted === reverseStrSorted) {
     return
   }
@@ -59,14 +61,18 @@ function compare(name: string, input: any, reverse: any) {
 }
 
 function test(name: string, c: (o: any) => any, d: (c: any) => any) {
+  timer.next('--------')
   timer.next(name + '[compress]')
-  let output = c(input)
+  const output = c(input)
   save(name, output)
   timer.next(name + '[decompress]')
-  let reverse = d(output)
+  const reverse = d(output)
   // save('reverse', reverse)
+  if ('skip compare') {
+    return
+  }
   timer.next(name + '[compare]')
-  let reverseStr = JSON.stringify(reverse)
+  const reverseStr = JSON.stringify(reverse)
   if (reverseStr === inputStr) {
     return
   }
@@ -74,20 +80,29 @@ function test(name: string, c: (o: any) => any, d: (c: any) => any) {
   // compare(name, input, reverse)
 }
 
-let cjson = require('compressed-json')
-test('compressed-json',
+test(
+  'JSON',
+  o => JSON.stringify(o),
+  c => JSON.parse(c),
+)
+
+const cjson = require('compressed-json')
+test(
+  'compressed-json',
   o => cjson.compress(o),
   c => cjson.decompress(c),
 )
 
 // too slow
-// let jsonpack = require('jsonpack')
-// test('jsonpack',
-//   o => jsonpack.pack(o),
-//   c => jsonpack.unpack(c),
-// )
+const jsonpack = require('jsonpack')
+test(
+  'jsonpack',
+  o => jsonpack.pack(o),
+  c => jsonpack.unpack(c),
+)
 
-test('new-impl',
+test(
+  'compress-json',
   o => compress(o),
   c => decompress(c),
 )

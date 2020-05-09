@@ -6,6 +6,15 @@ type Parent = any[] | object
 export type Key = string
 export type Value = string | null
 
+/**
+ * potential implementation of store are:
+ * - raw object ({})
+ * - array
+ * - Map
+ * - localStorage
+ * - lmdb
+ * - leveldb (sync mode)
+ * */
 export interface Store {
   has(key: Key): boolean
 
@@ -25,23 +34,23 @@ export interface Memory {
 }
 
 export function memToValues(mem: Memory): any[] {
-  let n = mem.keyCount
-  let vs = new Array(n)
+  const n = mem.keyCount
+  const vs = new Array(n)
   for (let i = 0; i < n; i++) {
-    let v = mem.store.get(i.toString())
+    const v = mem.store.get(i.toString())
     vs[i] = v
   }
   return vs
 }
 
 export function makeInMemoryStore(): Store {
-  let mem = {} as any
+  const mem = {} as any
   return {
     get(key: any): any {
       return mem[key]
     },
-    forEach(cb: (key: any, value: any) => (void | 'break')): void {
-      for (let [key, value] of Object.entries(mem)) {
+    forEach(cb: (key: any, value: any) => void | 'break'): void {
+      for (const [key, value] of Object.entries(mem)) {
         if (cb(key, value) === 'break') {
           return
         }
@@ -68,8 +77,8 @@ function getValueKey(mem: Memory, value: Value): Key {
   if (mem.cache.has(value!)) {
     return mem.cache.get(value!)!
   }
-  let id = mem.keyCount++
-  let key = num_to_s(id)
+  const id = mem.keyCount++
+  const key = num_to_s(id)
   mem.store.set(id.toString(), value)
   mem.cache.set(value!, key)
   return key
@@ -89,7 +98,7 @@ export function addValue(mem: Memory, o: any, parent: Parent | undefined): Key {
       if (Array.isArray(o)) {
         let acc = 'a'
         for (let i = 0; i < o.length; i++) {
-          let v = o[i]
+          const v = o[i]
           acc += '|' + addValue(mem, v, o)
         }
         if (acc === 'a') {
@@ -99,8 +108,8 @@ export function addValue(mem: Memory, o: any, parent: Parent | undefined): Key {
       } else {
         let acc = 'o'
         Object.entries(o).forEach(([key, value]) => {
-          let k = addValue(mem, key, o)
-          let v = addValue(mem, value, o)
+          const k = addValue(mem, key, o)
+          const v = addValue(mem, value, o)
           acc += '|' + k + '|' + v
         })
         if (acc === 'o') {
@@ -117,5 +126,3 @@ export function addValue(mem: Memory, o: any, parent: Parent | undefined): Key {
   }
   return throwUnknownDataType(o)
 }
-
-
