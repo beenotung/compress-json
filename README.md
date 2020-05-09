@@ -71,9 +71,9 @@ let data = {
 let compressed = [
   [  // encoded value array
     'int', // string
-    'n|g', // number (integer)
+    'n|g', // number (integer) (base62-encoded)
     'float',
-    'n|C.h', // number (float)
+    'n|C.h', // number (float) (integer part and decimals are base62-encoded separately)
     'str',
     'Alice',
     'longStr',
