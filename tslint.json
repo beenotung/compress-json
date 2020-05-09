@@ -6,6 +6,7 @@
     "tslint-config-prettier"
   ],
   "rules": {
+    "prefer-for-of": false,
     "no-unused-declaration": true,
     "array-type": [
       true,

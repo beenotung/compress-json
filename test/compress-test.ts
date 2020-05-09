@@ -1,4 +1,5 @@
 #!/usr/bin/env ts-node
+// tslint:disable no-var-requires
 import { jsonToString } from '@beenotung/tslib/json'
 import { startTimer } from '@beenotung/tslib/node'
 import fs from 'fs'
@@ -47,6 +48,7 @@ timer.next('prepare json string')
 const inputStr = JSON.stringify(input)
 let inputStrSorted: string // =  toString(input)
 
+// tslint:disable-next-line no-unused-declaration
 function compare(name: string, input: any, reverse: any) {
   if (!inputStrSorted) {
     inputStrSorted = toString(input)
