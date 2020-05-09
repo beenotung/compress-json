@@ -67,10 +67,13 @@ function test(name: string, c: (o: any) => any, d: (c: any) => any) {
   timer.next(name + '[compress]')
   const output = c(input)
   save(name, output)
+  if (!'compress only') {
+    return
+  }
   timer.next(name + '[decompress]')
   const reverse = d(output)
   // save('reverse', reverse)
-  if ('skip compare') {
+  if (!'skip compare') {
     return
   }
   timer.next(name + '[compare]')
