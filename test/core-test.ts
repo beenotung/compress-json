@@ -12,11 +12,10 @@ export function test() {
     }
   }
 
-  const { rich, sparse, conflict } = sample()
-
-  test(rich)
-  test(conflict)
-  test(sparse)
+  const data = sample()
+  test(data.rich)
+  test(data.conflict)
+  test(data.sparse)
 
   console.log('pass:', __filename.replace(__dirname + '/', ''))
 }

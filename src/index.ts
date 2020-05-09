@@ -1,1 +1,1 @@
-export * from './core'
+export { compress, decompress, Compressed } from './core'
