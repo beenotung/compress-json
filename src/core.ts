@@ -52,6 +52,9 @@ function decodeArray(values: Values, s: string) {
 }
 
 function decode(values: Values, key: Key) {
+  if (key === '') {
+    return null
+  }
   const id = decodeKey(key)
   const v = values[id]
   if (v === null) {

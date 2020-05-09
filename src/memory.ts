@@ -85,6 +85,9 @@ function getValueKey(mem: Memory, value: Value): Key {
 }
 
 export function addValue(mem: Memory, o: any, parent: Parent | undefined): Key {
+  if (o === null) {
+    return ''
+  }
   switch (typeof o) {
     case 'undefined':
       if (Array.isArray(parent)) {
