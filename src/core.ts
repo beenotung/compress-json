@@ -10,7 +10,7 @@ import {
 } from './memory'
 
 export type Values = Value[]
-export type Compressed = [Values, Key] // [values, root
+export type Compressed = [Values, Key] // [values, root]
 
 export function compress(o: object): Compressed {
   const mem: Memory = makeInMemoryMemory()
