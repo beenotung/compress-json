@@ -25,11 +25,12 @@ function decodeObject(values: Values, s: string) {
   }
   const o = {} as any
   const vs = s.split('|')
+  const key_id = vs[1]
+  const keys = decode(values, key_id)
   const n = vs.length
-  for (let i = 1; i < n; i += 2) {
-    let k = vs[i]
-    k = decode(values, k)
-    let v = vs[i + 1]
+  for (let i = 2; i < n; i++) {
+    const k = keys[i - 2]
+    let v = vs[i]
     v = decode(values, v)
     o[k] = v
   }

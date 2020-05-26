@@ -1,3 +1,4 @@
+import { config } from './config'
 import { throwUnknownDataType } from './debug'
 import { encodeBool, encodeNum, encodeStr } from './encode'
 import { num_to_s } from './number'
@@ -110,13 +111,19 @@ export function addValue(mem: Memory, o: any, parent: Parent | undefined): Key {
         return getValueKey(mem, acc)
       } else {
         let acc = 'o'
-        Object.entries(o).forEach(([key, value]) => {
-          const k = addValue(mem, key, o)
+        const keys = Object.keys(o)
+        if (keys.length === 0) {
+          return getValueKey(mem, 'o|')
+        }
+        if (config.sort_key) {
+          keys.sort()
+        }
+        const key_id = addValue(mem, keys, undefined)
+        acc += '|' + key_id
+        for (const key of keys) {
+          const value = o[key]
           const v = addValue(mem, value, o)
-          acc += '|' + k + '|' + v
-        })
-        if (acc === 'o') {
-          acc = 'o|'
+          acc += '|' + v
         }
         return getValueKey(mem, acc)
       }

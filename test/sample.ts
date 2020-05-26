@@ -1,3 +1,5 @@
+import { allNames } from '@beenotung/tslib/constant/character-name'
+import { Random } from '@beenotung/tslib/random'
 export function sample() {
   const longStr = 'A very very long string, that is repeated'
   const longNum = 9876543210.123456
@@ -11,7 +13,9 @@ export function sample() {
       longStr,
       longNum,
       bool: true,
-      arr: [42, 12.34, 'Alice', true, false, longStr, longNum],
+      bool2: false,
+      arr: [42, longStr],
+      arr2: [42, longStr],
       obj: {
         id: 123,
         name: 'Alice',
@@ -26,5 +30,16 @@ export function sample() {
       num: 1,
     },
     sparse,
+    same_array: {
+      arr_1: [1, 2, 3, 4, 5],
+      arr_2: [1, 2, 3, 4, 5],
+    },
+    collection: new Array(10).fill(0).map((_, i) => ({
+      user_id: i + 1,
+      name: Random.element(allNames),
+      region: 'HK',
+      role: 'user',
+      more: 'fields',
+    })),
   }
 }

@@ -2,20 +2,24 @@ import { compress, decompress } from '../src/core'
 import { sample } from './sample'
 
 export function test() {
-  function test(x: any) {
+  const data = sample()
+
+  function test(name: keyof typeof data) {
+    const x = data[name]
     const s = compress(x)
     const y = decompress(s)
-    console.dir({ x, s }, { depth: 20 })
+    console.dir({ name, x, s }, { depth: 20 })
     if (JSON.stringify(x) !== JSON.stringify(y)) {
       console.error({ x, s, y })
       throw new Error('compress/decompress mismatch')
     }
   }
 
-  const data = sample()
-  test(data.rich)
-  test(data.conflict)
-  test(data.sparse)
+  test('rich')
+  test('conflict')
+  test('sparse')
+  test('same_array')
+  test('collection')
 
   console.log('pass:', __filename.replace(__dirname + '/', ''))
 }

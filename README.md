@@ -49,23 +49,18 @@ JSON.stringify(data) === JSON.stringify(reversed) // will be true
 ## Format
 **Sample data**:
 ```typescript
+let longStr = 'A very very long string, that is repeated'
 let data = {
   int: 42,
   float: 12.34,
   str: 'Alice',
-  longStr: 'A very very long string, that is repeated',
+  longStr,
   longNum: 9876543210.123455,
   bool: true,
-  arr: [
-    42,
-    12.34,
-    'Alice',
-    true,
-    false,
-    'A very very long string, that is repeated',
-    9876543210.123455
-  ],
-  obj: {
+  bool2: false,
+  arr: [42, longStr],
+  arr2: [42, longStr], // identical values will be deduplidated, including array and object
+  obj: { // nested values are supported
     id: 123,
     name: 'Alice',
     role: [ 'Admin', 'User', 'Guest' ],
@@ -82,41 +77,45 @@ let data = {
 let compressed = [
   [  // encoded value array
     'int', // string
-    'n|g', // number (integer) (base62-encoded)
     'float',
-    'n|C.h', // number (float) (integer part and decimals are base62-encoded separately)
     'str',
-    'Alice',
     'longStr',
-    'A very very long string, that is repeated',
     'longNum',
-    'n|AmOy42.2KCf',
     'bool',
-    'b|T', // boolean (true)
+    'bool2',
     'arr',
-    'b|F', // boolean (false)
-    'a|1|3|5|B|D|7|9', // array
+    'arr2',
     'obj',
+    'escape',
+    'a|0|1|2|3|4|5|6|7|8|9|A',
+    'n|g', // number (integer) (base62-encoded)
+    'n|C.h', // number (float) (integer part and decimals are base62-encoded separately)
+    'Alice',
+    'A very very long string, that is repeated',
+    'n|AmOy42.2KCf',
+    'b|T', // boolean (true)
+    'b|F', // boolean (false)
+    'a|C|F', // array
     'id',
-    'n|1z',
     'name',
     'role',
+    'a|K|L|M|3|4',
+    'n|1z',
     'Admin',
     'User',
     'Guest',
-    'a|K|L|M',
-    'o|G|H|I|5|J|N|6|7|8|9', // object
-    'escape',
+    'a|P|Q|R',
+    'o|N|O|E|S|F|G', // object
     's|s|str', // escaped string
     's|n|123', // escaped number
     's|o|1',
     's|a|1',
     's|b|T', // escaped boolean
     's|b|F',
-    'a|Q|R|S|T|U|V',
-    'o|0|1|2|3|4|5|6|7|8|9|A|B|C|E|F|O|P|W'
+    'a|U|V|W|X|Y|Z',
+    'o|B|C|D|E|F|G|H|I|J|J|T|a'
   ],
-  'X' // root value index
+  'b' // root value index
 ]
 ```
 
