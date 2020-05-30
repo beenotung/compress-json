@@ -85,6 +85,20 @@ function getValueKey(mem: Memory, value: Value): Key {
   return key
 }
 
+/** @remark in-place sort the keys */
+function getSchema(mem: Memory, keys: string[]) {
+  if (config.sort_key) {
+    keys.sort()
+  }
+  const schema = keys.join(',')
+  if (mem.cache.has(schema)) {
+    return mem.cache.get(schema)
+  }
+  const key_id = addValue(mem, keys, undefined)
+  mem.cache.set(schema, key_id)
+  return key_id
+}
+
 export function addValue(mem: Memory, o: any, parent: Parent | undefined): Key {
   if (o === null) {
     return ''
@@ -110,15 +124,12 @@ export function addValue(mem: Memory, o: any, parent: Parent | undefined): Key {
         }
         return getValueKey(mem, acc)
       } else {
-        let acc = 'o'
         const keys = Object.keys(o)
         if (keys.length === 0) {
           return getValueKey(mem, 'o|')
         }
-        if (config.sort_key) {
-          keys.sort()
-        }
-        const key_id = addValue(mem, keys, undefined)
+        let acc = 'o'
+        const key_id = getSchema(mem, keys)
         acc += '|' + key_id
         for (const key of keys) {
           const value = o[key]
