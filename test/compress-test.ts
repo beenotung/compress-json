@@ -73,6 +73,7 @@ function test(name: string, c: (o: any) => any, d: (c: any) => any) {
   timer.next(name + '[decompress]')
   const reverse = d(output)
   // save('reverse', reverse)
+  // skip to avoid out-of-memory error for large sample
   if (!'skip compare') {
     return
   }

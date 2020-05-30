@@ -136,38 +136,38 @@ Algorithms in comparison:
 ### Compressed Size
 | sample  | JSON | compressed-json | jsonpack | **compress-json** |
 |---|---|---|---|---|
-|     all | 263M | 199M |    - | 180M |
-| 100,000 | 235M | 178M |    - | 162M |
-|  50,000 |  70M |  55M |    - |  51M |
-|  10,000 |  34M |  26M |    - |  24M |
-|   2,000 | 6.6M | 5.0M | 5.3M | 4.7M |
-|   1,000 | 4.8M | 3.7M | 3.8M | 3.5M |
-|     100 | 335K | 265K | 271K | 251K |
-|      10 | 4.0K | 3.3K | 3.0K | 3.4K |
+|     all | 263M | 199M |    - | 176M |
+| 100,000 | 235M | 178M |    - | 158M |
+|  50,000 |  70M |  55M |    - |  50M |
+|  10,000 |  34M |  26M |    - |  23M |
+|   2,000 | 6.6M | 5.0M | 5.3M | 4.4M |
+|   1,000 | 4.8M | 3.7M | 3.8M | 3.3M |
+|     100 | 335K | 265K | 271K | 243K |
+|      10 | 4.0K | 3.3K | 3.0K | 3.2K |
 
 ### Compression Time
 | sample  | JSON | compressed-json | jsonpack | **compress-json** |
 |---|---|---|---|---|
-|     all | 1,654ms | 12,674ms | timeout* | 20,208ms |
-| 100,000 | 1,500ms | 10,921ms | timeout* | 16,773ms |
-|  50,000 |   462ms |  3,047ms | timeout* |  5,127ms |
-|  10,000 |   146ms |  1,278ms | timeout* |  2,097ms |
-|   2,000 |    35ms |    328ms | 21,018ms |    520ms |
-|   1,000 |    20ms |    270ms | 12,960ms |    487ms |
-|     100 |     1ms |     18ms |     47ms |     35ms |
-|      10 |   0.3ms |    1.8ms |    1.6ms |    2.4ms |
+|     all | 1,654ms | 12,674ms | timeout* | 15,788ms |
+| 100,000 | 1,500ms | 10,921ms | timeout* | 12,715ms |
+|  50,000 |   462ms |  3,047ms | timeout* |  3,935ms |
+|  10,000 |   146ms |  1,278ms | timeout* |  1,733ms |
+|   2,000 |    35ms |    328ms | 21,018ms |    456ms |
+|   1,000 |    20ms |    270ms | 12,960ms |    390ms |
+|     100 |     1ms |     18ms |     47ms |     37ms |
+|      10 |   0.3ms |    1.8ms |    1.6ms |    1.9ms |
 
 *timeout: excess 1 minute
 
 ### Decompress Time
 | sample  | JSON | compressed-json | jsonpack | **compress-json** |
 |---|---|---|---|---|
-|     all | 1,908ms | 4,611ms |     - | 9,085ms |
-| 100,000 | 1,744ms | 3,740ms |     - | 7,707ms |
-|  50,000 |   558ms | 1,066ms |     - | 2,900ms |
-|  10,000 |   173ms |   460ms |     - | 1,144ms |
-|   2,000 |    47ms |   108ms | 189ms |   347ms |
-|   1,000 |    34ms |    90ms | 160ms |   297ms |
-|     100 |     8ms |    11ms |  16ms |    22ms |
-|      10 |   2.9ms |   2.1ms | 1.1ms |   1.2ms |
+|     all | 1,908ms | 4,611ms |     - | 9,225ms |
+| 100,000 | 1,744ms | 3,740ms |     - | 7,576ms |
+|  50,000 |   558ms | 1,066ms |     - | 2,452ms |
+|  10,000 |   173ms |   460ms |     - | 1,055ms |
+|   2,000 |    47ms |   108ms | 189ms |   317ms |
+|   1,000 |    34ms |    90ms | 160ms |   263ms |
+|     100 |     2ms |    11ms |  16ms |    19ms |
+|      10 |   2.9ms |   2.1ms | 1.1ms |   1.3ms |
 
