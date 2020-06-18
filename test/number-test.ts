@@ -1,7 +1,7 @@
 import { num_to_s, s_to_num } from '../src/number'
 
 export function test() {
-  const xs = [1234567890, 987654321, 1234.4321]
+  const xs = [1234567890, 987654321, 1234.4321, -5]
   for (const x of xs) {
     const s = num_to_s(x)
     const y = s_to_num(s)

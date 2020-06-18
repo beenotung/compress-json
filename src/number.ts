@@ -51,6 +51,9 @@ function reverse(s: string): string {
 }
 
 export function num_to_s(num: number): string {
+  if (num < 0) {
+    return '-' + num_to_s(-num)
+  }
   let [a, b] = num.toString().split('.')
   if (!b) {
     return int_to_s(num)
@@ -62,6 +65,9 @@ export function num_to_s(num: number): string {
 }
 
 export function s_to_num(s: string): number {
+  if (s[0] === '-') {
+    return -s_to_num(s.substr(1))
+  }
   let [a, b] = s.split('.')
   if (!b) {
     return s_to_int(a)
