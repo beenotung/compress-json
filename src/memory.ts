@@ -17,6 +17,23 @@ export type Value = string | null
  * - leveldb (sync mode)
  * */
 export interface Store {
+  add(value: Value): void
+
+  forEach(cb: (value: Value) => void | 'break'): void
+
+  toArray(): Value[]
+}
+
+/**
+ * potential implementation of cache are:
+ * - raw object ({})
+ * - array
+ * - Map
+ * - localStorage
+ * - lmdb
+ * - leveldb (sync mode)
+ * */
+export interface Cache {
   has(key: Key): boolean
 
   get(key: Key): Value | undefined
@@ -30,21 +47,34 @@ export interface Memory {
   // key -> value
   store: Store
   // value -> key
-  cache: Store
+  cache: Cache
   keyCount: number
 }
 
-export function memToValues(mem: Memory): any[] {
-  const n = mem.keyCount
-  const vs = new Array(n)
-  for (let i = 0; i < n; i++) {
-    const v = mem.store.get(i.toString())
-    vs[i] = v
-  }
-  return vs
+export function memToValues(mem: Memory): Value[] {
+  return mem.store.toArray()
 }
 
 export function makeInMemoryStore(): Store {
+  const mem: Value[] = []
+  return {
+    forEach(cb: (value: Value) => void | 'break') {
+      for (let i = 0; i < mem.length; i++) {
+        if (cb(mem[i]) === 'break') {
+          return
+        }
+      }
+    },
+    add(value: Value) {
+      mem.push(value)
+    },
+    toArray(): Value[] {
+      return mem
+    },
+  }
+}
+
+export function makeInMemoryCache(): Cache {
   const mem = {} as any
   return {
     get(key: any): any {
@@ -69,7 +99,7 @@ export function makeInMemoryStore(): Store {
 export function makeInMemoryMemory(): Memory {
   return {
     store: makeInMemoryStore(),
-    cache: makeInMemoryStore(),
+    cache: makeInMemoryCache(),
     keyCount: 0,
   }
 }
@@ -80,7 +110,7 @@ function getValueKey(mem: Memory, value: Value): Key {
   }
   const id = mem.keyCount++
   const key = num_to_s(id)
-  mem.store.set(id.toString(), value)
+  mem.store.add(value)
   mem.cache.set(value!, key)
   return key
 }

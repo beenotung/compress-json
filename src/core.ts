@@ -52,7 +52,7 @@ function decodeArray(values: Values, s: string) {
   return xs
 }
 
-function decode(values: Values, key: Key) {
+export function decode(values: Values, key: Key) {
   if (key === '') {
     return null
   }
