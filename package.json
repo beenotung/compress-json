@@ -3,11 +3,7 @@
   "version": "1.0.0",
   "description": "convert JSON data to space efficient format",
   "keywords": [],
-  "author": {
-    "name": "Beeno Tung",
-    "email": "aabbcc1241@yahoo.com.hk",
-    "url": "https://beeno-tung.surge.sh"
-  },
+  "author": "Beeno Tung <aabbcc1241@yahoo.com.hk> (https://beeno-tung.surge.sh)",
   "license": "BSD-2-Clause",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -48,5 +44,13 @@
     "tslint-eslint-rules": "^5.4.0",
     "tslint-etc": "^1.10.1",
     "typescript": "^3.8.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beenotung/compress-json.git"
+  },
+  "bugs": {
+    "url": "https://github.com/beenotung/compress-json/issues"
+  },
+  "homepage": "https://github.com/beenotung/compress-json#readme"
 }
