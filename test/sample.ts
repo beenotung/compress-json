@@ -23,7 +23,7 @@ export function sample() {
         longStr,
         longNum,
       },
-      escape: ['s|str', 'n|123', 'o|1', 'a|1', 'b|T', 'b|F'],
+      escape: ['s|str', 'n|123', 'o|1', 'a|1', 'b|T', 'b|F', '...s|...'],
     },
     conflict: {
       str: '1',
