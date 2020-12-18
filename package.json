@@ -2,7 +2,10 @@
   "name": "compress-json",
   "version": "1.0.0",
   "description": "convert JSON data to space efficient format",
-  "keywords": [],
+  "keywords": [
+    "json",
+    "compress"
+  ],
   "author": {
     "name": "Beeno Tung",
     "email": "aabbcc1241@yahoo.com.hk",
