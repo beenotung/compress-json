@@ -26,8 +26,12 @@ function decodeObject(values: Values, s: string) {
   const o = {} as any
   const vs = s.split('|')
   const key_id = vs[1]
-  const keys = decode(values, key_id)
+  let keys = decode(values, key_id)
   const n = vs.length
+  if (n - 2 === 1 && !Array.isArray(keys)) {
+    // single-key object using existing value as key
+    keys = [keys]
+  }
   for (let i = 2; i < n; i++) {
     const k = keys[i - 2]
     let v = vs[i]

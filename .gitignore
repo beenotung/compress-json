@@ -7,4 +7,11 @@ dist/
 *.tgz
 
 data/
+
+# debug files
 data.json
+compressed.json
+decompressed.json
+
+# WIP on csharp branch
+csharp/
