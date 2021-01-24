@@ -47,7 +47,5 @@ export function encodeStr(str: string): string {
 
 export function decodeStr(s: string): string {
   const prefix = s[0] + s[1]
-  return prefix === 's|'
-    ? s.substr(2)
-    : s
+  return prefix === 's|' ? s.substr(2) : s
 }
