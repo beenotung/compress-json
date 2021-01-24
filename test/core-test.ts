@@ -45,6 +45,13 @@ export function test() {
       Name: 'Triangle-01',
     },
   })
+  test_data('Array using existing values used by object key', {
+    arr: ['id', 'name'],
+    obj: {
+      id: 1,
+      name: 'arr',
+    },
+  })
 
   console.log('pass:', __filename.replace(__dirname + '/', ''))
 }
