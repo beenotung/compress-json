@@ -46,11 +46,11 @@ export function test() {
     },
   })
   test_data('Array using existing values used by object key', {
-    arr: ['id', 'name'],
     obj: {
       id: 1,
       name: 'arr',
     },
+    str: 'id,name',
   })
 
   console.log('pass:', __filename.replace(__dirname + '/', ''))
