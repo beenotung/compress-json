@@ -8,9 +8,8 @@ export function test() {
   function test_data(name: string, data: any) {
     const compressed = compress(data)
     const decompressed = decompress(compressed)
-    console.dir({ name, data, compressed }, { depth: 20 })
+    console.dir({ name, data, compressed, decompressed }, { depth: 20 })
     if (JSON.stringify(data) !== JSON.stringify(decompressed)) {
-      console.error({ data, compressed, decompressed })
       writeFileSync('data.json', JSON.stringify(data, null, 2))
       writeFileSync('compressed.json', JSON.stringify(compressed, null, 2))
       writeFileSync('decompressed.json', JSON.stringify(decompressed, null, 2))
