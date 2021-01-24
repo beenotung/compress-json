@@ -51,5 +51,13 @@
     "tslint-eslint-rules": "^5.4.0",
     "tslint-etc": "^1.10.1",
     "typescript": "^3.8.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beenotung/compress-json.git"
+  },
+  "bugs": {
+    "url": "https://github.com/beenotung/compress-json/issues"
+  },
+  "homepage": "https://github.com/beenotung/compress-json#readme"
 }
