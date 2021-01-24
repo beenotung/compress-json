@@ -41,6 +41,11 @@ export function encodeStr(str: string): string {
     case 'a|':
     case 's|':
       str = 's|' + str
+      break
+    default:
+      if (str.includes(',')) {
+        str = 's|' + str
+      }
   }
   return str
 }
