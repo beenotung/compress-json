@@ -91,7 +91,7 @@ export function makeInMemoryCache(): Cache {
       mem[key] = value
     },
     has(key: any): boolean {
-      return key in mem
+      return mem.hasOwnProperty(key)
     },
   }
 }

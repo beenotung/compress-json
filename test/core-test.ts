@@ -53,6 +53,15 @@ export function test() {
     str: 'id,name',
   })
 
+  test_data('Handle name conflict with Object.prototype', {
+    toString: 1,
+    valueOf: 2,
+    // hasOwnProperty: 3, // FIXME
+    constructor: 4,
+    isPrototypeOf: 5,
+    propertyIsEnumerable: 6,
+  })
+
   console.log('pass:', __filename.replace(__dirname + '/', ''))
 }
 
