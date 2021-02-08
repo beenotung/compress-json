@@ -41,10 +41,16 @@ export function encodeStr(str: string): string {
     case 'a|':
     case 's|':
       str = 's|' + str
+      break
+    default:
+      if (str.includes(',')) {
+        str = 's|' + str
+      }
   }
   return str
 }
 
 export function decodeStr(s: string): string {
-  return s.replace('s|', '')
+  const prefix = s[0] + s[1]
+  return prefix === 's|' ? s.substr(2) : s
 }

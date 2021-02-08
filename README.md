@@ -171,3 +171,5 @@ Algorithms in comparison:
 |     100 |     2ms |    11ms |  16ms |    19ms |
 |      10 |   2.9ms |   2.1ms | 1.1ms |   1.3ms |
 
+## License
+[BSD 2-Clause License](./LICENSE) (Free Open Sourced Software)

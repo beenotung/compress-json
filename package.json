@@ -1,9 +1,16 @@
 {
   "name": "compress-json",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "convert JSON data to space efficient format",
-  "keywords": [],
-  "author": "Beeno Tung <aabbcc1241@yahoo.com.hk> (https://beeno-tung.surge.sh)",
+  "keywords": [
+    "json",
+    "compress"
+  ],
+  "author": {
+    "name": "Beeno Tung",
+    "email": "aabbcc1241@yahoo.com.hk",
+    "url": "https://beeno-tung.surge.sh"
+  },
   "license": "BSD-2-Clause",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
