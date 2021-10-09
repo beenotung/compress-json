@@ -7,6 +7,7 @@ dist/
 *.tgz
 
 data/
+*.zip
 
 # debug files
 data.json
