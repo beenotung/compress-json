@@ -1,7 +1,14 @@
 import { num_to_s, s_to_num } from '../src/number'
 
 export function test() {
-  const xs = [1234567890, 987654321, 1234.4321, -5]
+  const xs = [
+    1234567890,
+    987654321,
+    1234.4321,
+    -5,
+    // to test precision bug reported in https://github.com/beenotung/compress-json/issues/3
+    0.12371134020618557,
+  ]
   for (const x of xs) {
     const s = num_to_s(x)
     const y = s_to_num(s)
