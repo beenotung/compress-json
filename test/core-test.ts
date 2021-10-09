@@ -21,6 +21,7 @@ export function test() {
     test_data(name, data[name])
   }
 
+  test('floating')
   test('rich')
   test('conflict')
   test('sparse')

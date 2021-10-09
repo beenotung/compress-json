@@ -6,6 +6,12 @@ export function sample() {
   const sparse = []
   sparse[10] = 1
   return {
+    floating: [
+      0.12371134020618557,
+      0.032989690721649485,
+      0.18144329896907216,
+      2.1651785714285716,
+    ],
     rich: {
       int: 42,
       float: 12.34,
