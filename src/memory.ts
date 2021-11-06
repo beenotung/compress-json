@@ -34,13 +34,17 @@ export interface Store {
  * - leveldb (sync mode)
  * */
 export interface Cache {
-  has(key: Key): boolean
+  hasValue(key: Key): boolean
+  hasSchema(key: Key): boolean
 
-  get(key: Key): Value | undefined
+  getValue(key: Key): Value | undefined
+  getSchema(key: Key): Value | undefined
 
-  set(key: Key, value: Value): void
+  setValue(key: Key, value: Value): void
+  setSchema(key: Key, value: Value): void
 
-  forEach(cb: (key: Key, value: any) => void | 'break'): void
+  forEachValue(cb: (key: Key, value: any) => void | 'break'): void
+  forEachSchema(cb: (key: Key, value: any) => void | 'break'): void
 }
 
 export interface Memory {
@@ -75,23 +79,40 @@ export function makeInMemoryStore(): Store {
 }
 
 export function makeInMemoryCache(): Cache {
-  const mem = {} as any
+  const valueMem = Object.create(null) as any
+  const schemaMem = Object.create(null) as any
   return {
-    get(key: any): any {
-      return mem[key]
+    getValue(key: any): any {
+      return valueMem[key]
     },
-    forEach(cb: (key: any, value: any) => void | 'break'): void {
-      for (const [key, value] of Object.entries(mem)) {
+    getSchema(key: any): any {
+      return schemaMem[key]
+    },
+    forEachValue(cb: (key: any, value: any) => void | 'break'): void {
+      for (const [key, value] of Object.entries(valueMem)) {
         if (cb(key, value) === 'break') {
           return
         }
       }
     },
-    set(key: any, value: any): void {
-      mem[key] = value
+    forEachSchema(cb: (key: any, value: any) => void | 'break'): void {
+      for (const [key, value] of Object.entries(schemaMem)) {
+        if (cb(key, value) === 'break') {
+          return
+        }
+      }
     },
-    has(key: any): boolean {
-      return mem.hasOwnProperty(key)
+    setValue(key: any, value: any): void {
+      valueMem[key] = value
+    },
+    setSchema(key: any, value: any): void {
+      schemaMem[key] = value
+    },
+    hasValue(key: any): boolean {
+      return key in valueMem
+    },
+    hasSchema(key: any): boolean {
+      return key in schemaMem
     },
   }
 }
@@ -105,13 +126,13 @@ export function makeInMemoryMemory(): Memory {
 }
 
 function getValueKey(mem: Memory, value: Value): Key {
-  if (mem.cache.has(value!)) {
-    return mem.cache.get(value!)!
+  if (mem.cache.hasValue(value!)) {
+    return mem.cache.getValue(value!)!
   }
   const id = mem.keyCount++
   const key = num_to_s(id)
   mem.store.add(value)
-  mem.cache.set(value!, key)
+  mem.cache.setValue(value!, key)
   return key
 }
 
@@ -121,11 +142,11 @@ function getSchema(mem: Memory, keys: string[]) {
     keys.sort()
   }
   const schema = keys.join(',')
-  if (mem.cache.has(schema)) {
-    return mem.cache.get(schema)
+  if (mem.cache.hasSchema(schema)) {
+    return mem.cache.getSchema(schema)
   }
   const key_id = addValue(mem, keys, undefined)
-  mem.cache.set(schema, key_id)
+  mem.cache.setSchema(schema, key_id)
   return key_id
 }
 

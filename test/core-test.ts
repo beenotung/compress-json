@@ -57,10 +57,18 @@ export function test() {
   test_data('Handle name conflict with Object.prototype', {
     toString: 1,
     valueOf: 2,
-    // hasOwnProperty: 3, // FIXME
+    hasOwnProperty: 3,
     constructor: 4,
     isPrototypeOf: 5,
     propertyIsEnumerable: 6,
+  })
+
+  // test for https://github.com/beenotung/compress-json/issues/5
+  test_data('A string appears as both key and value', {
+    'any-1': {
+      'key-and-value': 'any-3',
+    },
+    'any-2': 'key-and-value',
   })
 
   console.log('pass:', __filename.replace(__dirname + '/', ''))
