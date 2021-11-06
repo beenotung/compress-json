@@ -70,6 +70,7 @@ export function test() {
     },
     'any-2': 'key-and-value',
   })
+  test_data('array with null element', [null])
 
   console.log('pass:', __filename.replace(__dirname + '/', ''))
 }
