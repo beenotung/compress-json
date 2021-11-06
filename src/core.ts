@@ -57,7 +57,7 @@ function decodeArray(values: Values, s: string) {
 }
 
 export function decode(values: Values, key: Key) {
-  if (key === '') {
+  if (key === '' || key === '_') {
     return null
   }
   const id = decodeKey(key)

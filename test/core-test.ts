@@ -4,6 +4,7 @@ import { sample } from './sample'
 
 export function test() {
   const data = sample()
+  let last_decompressed: any
 
   function test_data(name: string, data: any) {
     const compressed = compress(data)
@@ -15,6 +16,7 @@ export function test() {
       writeFileSync('decompressed.json', JSON.stringify(decompressed, null, 2))
       throw new Error('compress/decompress mismatch')
     }
+    last_decompressed = decompressed
   }
 
   function test(name: keyof typeof data) {
@@ -70,7 +72,13 @@ export function test() {
     },
     'any-2': 'key-and-value',
   })
-  test_data('array with null element', [null])
+  test_data('empty array', [])
+  test_data('array with a null element', [null])
+  if (last_decompressed[0] !== null) {
+    console.error('expected null, got undefined?')
+    throw new Error('compress/decompress mismatch')
+  }
+  test_data('array with multiple null elements', [null, null])
 
   console.log('pass:', __filename.replace(__dirname + '/', ''))
 }

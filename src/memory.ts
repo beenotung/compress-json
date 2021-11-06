@@ -168,7 +168,8 @@ export function addValue(mem: Memory, o: any, parent: Parent | undefined): Key {
         let acc = 'a'
         for (let i = 0; i < o.length; i++) {
           const v = o[i]
-          acc += '|' + addValue(mem, v, o)
+          const key = v === null ? '_' : addValue(mem, v, o)
+          acc += '|' + key
         }
         if (acc === 'a') {
           acc = 'a|'
