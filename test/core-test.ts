@@ -28,7 +28,7 @@ export function test() {
   test('same_array')
   test('collection')
 
-  // debug for https://github.com/beenotung/compress-json/issues/2
+  // test for https://github.com/beenotung/compress-json/issues/2
   test_data('empty object', {})
   test_data('object with one key', { Name: 'Triangle-01' })
   test_data('nested object with one key', {
