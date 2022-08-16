@@ -3,6 +3,7 @@
 Store JSON data in space efficient manner.
 
 [![npm Package Version](https://img.shields.io/npm/v/compress-json.svg)](https://www.npmjs.com/package/compress-json)
+[![npm Package Downloads](https://img.shields.io/npm/dm/compress-json)](https://www.npmtrends.com/compress-json)
 
 Inspired by [compressed-json](https://github.com/okunishinishi/node-compressed-json) and [jsonpack](https://github.com/rgcl/jsonpack).
 
