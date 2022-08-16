@@ -2,7 +2,7 @@
 
 Store JSON data in space efficient manner.
 
-[![npm Package Version](https://img.shields.io/npm/v/compress-json.svg?maxAge=2592000)](https://www.npmjs.com/package/compress-json)
+[![npm Package Version](https://img.shields.io/npm/v/compress-json.svg)](https://www.npmjs.com/package/compress-json)
 
 Inspired by [compressed-json](https://github.com/okunishinishi/node-compressed-json) and [jsonpack](https://github.com/rgcl/jsonpack).
 
