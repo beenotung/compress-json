@@ -119,6 +119,25 @@ let compressed = [
 ]
 ```
 
+## Helper Functions
+```typescript
+import { compress } from 'compress-json'
+import { trimUndefined, trimUndefinedRecursively } from 'compress-json'
+
+let user = { name: 'Alice', role: undefined }
+
+compress(user) // will throw an error since undefined field is not supported
+
+trimUndefined(user) // explicitly remove undefined fields
+
+compress(user) // now it will not throw error since user.role is deleted
+
+let a = { name: 'a', extra: undefined }
+let b = { name: 'b', a }
+trimUndefinedRecursively(b)
+compress(b) // now it will not throw error since b.a.extra is deleted
+```
+
 ## Benchmark
 
 Test file: [compress-test.ts](./test/compress-test.ts)
