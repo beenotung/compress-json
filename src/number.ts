@@ -81,9 +81,12 @@ function reverse(s: string): string {
   return s.split('').reverse().join('')
 }
 
-export function num_to_s(num: number): string {
+export function num_to_s(num: number | bigint): string {
   if (num < 0) {
     return '-' + num_to_s(-num)
+  }
+  if (typeof num === 'bigint') {
+    return ':' + big_int_to_s(num)
   }
   let [a, b] = num.toString().split('.')
   if (!b) {
@@ -103,23 +106,23 @@ export function int_str_to_s(int_str: string): string {
   return ':' + big_int_to_s(BigInt(int_str))
 }
 
-function s_to_int_str(s: string): string {
+function s_to_int_or_bigint(s: string): number | bigint {
   if (s[0] === ':') {
-    return s_to_big_int(s.substring(1)).toString()
+    return s_to_big_int(s.substring(1))
   }
-  return s_to_int(s).toString()
+  return s_to_int(s)
 }
 
-export function s_to_num(s: string): number {
+export function s_to_num(s: string): number | bigint {
   if (s[0] === '-') {
     return -s_to_num(s.substr(1))
   }
   let [a, b] = s.split('.')
   if (!b) {
-    return s_to_int(a)
+    return s_to_int_or_bigint(a)
   }
-  a = s_to_int_str(a)
-  b = s_to_int_str(b)
+  a = s_to_int_or_bigint(a).toString()
+  b = s_to_int_or_bigint(b).toString()
   b = reverse(b)
   return +(a + '.' + b)
 }
