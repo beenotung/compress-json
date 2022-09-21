@@ -89,10 +89,30 @@ export function num_to_s(num: number): string {
   if (!b) {
     return int_to_s(num)
   }
+  let c: string | undefined
+  if (b) {
+    [b, c] = b.split('e')
+  }
   a = int_str_to_s(a)
   b = reverse(b)
   b = int_str_to_s(b)
-  return a + '.' + b
+  let str = a + '.' + b
+  if (c) {
+    str += '.'
+    switch (c[0]) {
+      case '+':
+        c = c.slice(1)
+        break
+      case '-':
+        str += '-'
+        c = c.slice(1)
+        break
+    }
+    c = reverse(c)
+    c = int_str_to_s(c)
+    str += c
+  }
+  return str
 }
 
 export function int_str_to_s(int_str: string): string {
@@ -114,12 +134,24 @@ export function s_to_num(s: string): number {
   if (s[0] === '-') {
     return -s_to_num(s.substr(1))
   }
-  let [a, b] = s.split('.')
+  let [a, b, c] = s.split('.')
   if (!b) {
     return s_to_int(a)
   }
   a = s_to_int_str(a)
   b = s_to_int_str(b)
   b = reverse(b)
-  return +(a + '.' + b)
+  let str = a + '.' + b
+  if (c) {
+    str += 'e'
+    let neg = false
+    if (c[0] === '-') {
+      neg = true
+      c = c.slice(1)
+    }
+    c = s_to_int_str(c)
+    c = reverse(c)
+    str += neg ? -c : +c
+  }
+  return +str
 }

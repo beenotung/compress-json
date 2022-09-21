@@ -8,6 +8,8 @@ export function test() {
     -5,
     // to test precision bug reported in https://github.com/beenotung/compress-json/issues/3
     0.12371134020618557,
+    // to test exponential number suggested in https://github.com/beenotung/compress-json/issues/9
+    1.23456789123789e22,
   ]
   for (const x of xs) {
     const s = num_to_s(x)
