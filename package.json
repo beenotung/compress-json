@@ -25,11 +25,6 @@
     "rawtest": "ts-node test/index.ts",
     "prepublishOnly": "npm run rawtest && npm run build"
   },
-  "husky": {
-    "hook": {
-      "pre-commit": "npm run format"
-    }
-  },
   "directories": {
     "test": "test"
   },
@@ -41,7 +36,6 @@
     "@beenotung/tslib": "^16.20.1",
     "@types/node": "*",
     "compressed-json": "^1.0.15",
-    "husky": "^4.2.5",
     "jsonpack": "^1.1.5",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
