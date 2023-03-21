@@ -22,6 +22,11 @@ Although the reduced IO may speed up usage of lmdb on frequently redundant data,
     - leveldb (sync mode)
     - custom adapter
 
+## Other Implementations
+- [PHP](https://github.com/inkrot/php-compress-json)
+- Python (TODO)
+- C# (TODO)
+
 ## Installation
 ```bash
 npm i -S compress-json
