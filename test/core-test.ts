@@ -1,11 +1,15 @@
-import { writeFileSync } from 'fs'
+import { mkdirSync, writeFileSync } from 'fs'
 import { compress, decompress } from '../src/core'
 import { sample } from './sample'
+import { join } from 'path'
 
 export function test() {
   const data = sample()
   let last_decompressed: any
 
+  let dir = 'samples'
+  mkdirSync(dir, { recursive: true })
+  let i = 0
   function test_data(name: string, data: any) {
     const compressed = compress(data)
     const decompressed = decompress(compressed)
@@ -17,6 +21,16 @@ export function test() {
       throw new Error('compress/decompress mismatch')
     }
     last_decompressed = decompressed
+    i++
+    writeFileSync(
+      join(dir, `${i}.json`),
+      JSON.stringify({
+        i,
+        name,
+        data,
+        compressed,
+      }),
+    )
   }
 
   function test(name: keyof typeof data) {

@@ -16,3 +16,4 @@ decompressed.json
 
 # WIP on csharp branch
 csharp/
+.venv
