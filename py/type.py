@@ -1,0 +1,5 @@
+dict_class = type({})
+list_class = type([])
+int_class = type(1)
+float_class = type(1.0)
+str_class = type('')

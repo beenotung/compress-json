@@ -109,18 +109,16 @@ def load_sample(file):
 
 
 # %%
-## try the test flow
-
-load_sample('samples/7.json')
-
-# %%
 ## test step by step
 
-# empty object
+# array of number
 load_sample('samples/7.json')
 
+# empty object
+load_sample('samples/8.json')
+
 # flat object
-load_sample('samples/14.json')
+load_sample('samples/15.json')
 
 # %%
 ## test against all samples
