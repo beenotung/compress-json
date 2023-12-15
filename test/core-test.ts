@@ -47,6 +47,7 @@ export function test() {
   test('sparse')
   test('same_array')
   test('collection')
+  test('exponential')
 
   // test for https://github.com/beenotung/compress-json/issues/2
   test_data('empty object', {})

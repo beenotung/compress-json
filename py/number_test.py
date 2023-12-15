@@ -57,4 +57,7 @@ test(-3.01, '-3.A')
 test(-62.3483, '-10.zz')
 
 # exponential representation
-# test(0.0000001, '0.0e-???')
+test( 1.23456789123789e+22,  "1.S2Ec8DtI.M")
+test( 1.23456789123789e-22,  "1.S2Ec8DtI.-M")
+test(-1.23456789123789e+22, "-1.S2Ec8DtI.M")
+test(-1.23456789123789e-22, "-1.S2Ec8DtI.-M")

@@ -47,5 +47,11 @@ export function sample() {
       role: 'user',
       more: 'fields',
     })),
+    exponential: [
+      1.23456789123789e22,
+      1.23456789123789e-22,
+      -1.23456789123789e22,
+      -1.23456789123789e-22,
+    ]
   }
 }
