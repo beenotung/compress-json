@@ -42,3 +42,19 @@ test(-62, '-10')
 test(-63, '-11')
 test(-3843, '-zz')
 test(-3844, '-100')
+
+# positive floating number
+test(1.5, '1.5')
+test(3.1, '3.1')
+test(3.01, '3.A')
+test(3.3483, '3.zz')
+test(10.3483, 'A.zz')
+test(62.3483, '10.zz')
+
+# negative floating number
+test(-3.1, '-3.1')
+test(-3.01, '-3.A')
+test(-62.3483, '-10.zz')
+
+# exponential representation
+# test(0.0000001, '0.0e-???')
