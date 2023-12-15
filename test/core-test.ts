@@ -24,12 +24,16 @@ export function test() {
     i++
     writeFileSync(
       join(dir, `${i}.json`),
-      JSON.stringify({
-        i,
-        name,
-        data,
-        compressed,
-      }),
+      JSON.stringify(
+        {
+          i,
+          name,
+          data,
+          compressed,
+        },
+        null,
+        2,
+      ),
     )
   }
 
