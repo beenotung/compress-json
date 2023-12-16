@@ -67,9 +67,9 @@ def decode_array(values, s):
 
   vs = s.split('|')
   n = len(vs) - 1
-  xs = []
+  xs = [None] * n
   for i in range(0, n):
     v = vs[i+1]
     v = decode(values, v)
-    xs.append(v)
+    xs[i] = v
   return xs
