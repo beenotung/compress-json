@@ -71,7 +71,6 @@ export function big_int_to_s(int: bigint): string {
     const i = int % n
     const c = i_to_s[Number(i)]
     acc.push(c)
-    int -= i
     int /= n
   }
   return acc.reverse().join('')
