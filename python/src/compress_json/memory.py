@@ -10,7 +10,10 @@ class InMemoryStore:
   def add(self, value):
     self.mem.append(value)
 
-  def to_array(self):
+  def __iter__(self):
+    return self.mem
+
+  def to_array(self) -> list:
     return self.mem
 
 class InMemoryCache:
@@ -18,22 +21,22 @@ class InMemoryCache:
     self.schema_mem = {}
     self.value_mem = {}
 
-  def get_value(self, key):
+  def get_value(self, key: str) -> any:
     return self.value_mem[key]
 
-  def get_schema(self, key):
+  def get_schema(self, key: str) -> any:
     return self.schema_mem[key]
 
-  def set_value(self, key, value):
+  def set_value(self, key: str, value: any) -> None:
     self.value_mem[key] = value
 
-  def set_schema(self, key, value):
+  def set_schema(self, key: str, value: any) -> None:
     self.schema_mem[key] = value
 
-  def has_value(self, key):
+  def has_value(self, key: str) -> bool:
     return key in self.value_mem
 
-  def has_scheme(self, key):
+  def has_scheme(self, key: str) -> bool:
     return key in self.schema_mem
 
 class InMemoryMemory:

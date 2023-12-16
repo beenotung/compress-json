@@ -1,0 +1,30 @@
+# reference: https://realpython.com/pypi-publish-python-package/#publish-your-package-to-pypi
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "compress-json-python"
+version = "0.0.0"
+description = "convert JSON data to space efficient format"
+readme = "README.md"
+authors = [{ name = "Beeno Tung", email = "aabbcc1241@yahoo.com.hk" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = [
+    "json",
+    "compress"
+]
+dependencies = [
+]
+
+[project.urls]
+Homepage = "https://github.com/beenotung/compress-json"
+
+[project.scripts]
+compress-json = "compress_json.__main__:main"
