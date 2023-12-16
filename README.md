@@ -12,6 +12,7 @@ It is not optimized for writing nor querying throughput.
 Although the reduced IO may speed up usage of lmdb on frequently redundant data, that is not the design goal.
 
 ## Features
+- Supports all JSON types
 - Object key order is preserved
 - Repeated values are stored only once
 - Numbers are encoded in base62 format (0-9A-Za-z)
