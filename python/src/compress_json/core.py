@@ -4,7 +4,7 @@ from type import int_class, float_class, str_class, list_class
 
 def compress(o):
   mem = InMemoryMemory()
-  root = add_value(mem, o, parent=None)
+  root = add_value(mem, o)
   values = mem_to_values(mem)
   return [values, root]
 

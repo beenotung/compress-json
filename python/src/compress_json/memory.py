@@ -87,10 +87,10 @@ def get_schema(mem, keys):
   if config.sort_key:
     keys = sorted(keys)
   schema = ','.join(keys)
-  key_id = add_value(mem, keys, parent=None)
+  key_id = add_value(mem, keys)
   return key_id, keys
 
-def add_value(mem, o, parent):
+def add_value(mem, o):
   if o == None:
     return ''
 
@@ -100,7 +100,7 @@ def add_value(mem, o, parent):
     acc = 'a'
     empty_value = '' if is_sparse_array(o) else '_'
     for v in o:
-      key = empty_value if v is None else add_value(mem, v, o)
+      key = empty_value if v is None else add_value(mem, v)
       acc += '|' + key
     if acc == 'a':
       acc = 'a|'
@@ -115,7 +115,7 @@ def add_value(mem, o, parent):
     acc += '|' + key_id
     for key in keys:
       value = o[key]
-      v = add_value(mem, value, o)
+      v = add_value(mem, value)
       acc += '|' + v
     return get_value_key(mem, acc)
 
