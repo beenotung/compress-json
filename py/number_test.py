@@ -61,3 +61,6 @@ test( 1.23456789123789e+22,  "1.S2Ec8DtI.M")
 test( 1.23456789123789e-22,  "1.S2Ec8DtI.-M")
 test(-1.23456789123789e+22, "-1.S2Ec8DtI.M")
 test(-1.23456789123789e-22, "-1.S2Ec8DtI.-M")
+
+# floating number requiring bigint in fraction part
+test(0.032989690721649485, "0.:hD3gasB3de")

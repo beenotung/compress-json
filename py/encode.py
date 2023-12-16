@@ -18,3 +18,21 @@ def decode_key(key):
     return int(key)
 
   return s_to_int(key)
+
+def encode_str(string):
+  prefix = string[0:2]
+  if (
+    prefix == 'b|' or
+    prefix == 'o|' or
+    prefix == 'n|' or
+    prefix == 'a|' or
+    prefix == 's|'
+  ):
+    return 's|' + string
+  return string
+
+def decode_str(string):
+  prefix = string[0:2]
+  if prefix == 's|':
+    return string[2:]
+  return string

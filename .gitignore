@@ -14,6 +14,10 @@ data.json
 compressed.json
 decompressed.json
 
+# test samples for python
+samples
+
 # WIP on csharp branch
 csharp/
 .venv
+.vscode/launch.json

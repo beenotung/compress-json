@@ -51,15 +51,17 @@ def num_to_s(num):
 
   return string
 
-
+max_int = 2**53
 
 def int_str_to_s(int_str):
-  # FIXME check for bigint range
   integer = int(int_str)
-  return int_to_s(integer)
+  if integer <= max_int:
+    return int_to_s(integer)
+  return ':' + int_to_s(integer)
 
 def s_to_int_str(s):
-  # FIXME check for bigint marker
+  if s[0] == ':':
+    s = s[1:]
   return str(s_to_int(s))
 
 def s_to_num(s):
@@ -107,7 +109,7 @@ def int_to_s(integer):
     i = integer % N
     c = i_to_s[i]
     acc.append(c)
-    integer = int(integer / N)
+    integer //= N
   return ''.join(acc[::-1])
 
 def s_to_int(s):
