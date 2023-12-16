@@ -1,3 +1,5 @@
+from type import int_class
+
 i_to_s = ''
 
 for i in range(0, 10):
@@ -23,7 +25,9 @@ def num_to_s(num):
   [a, b] = str(float(num)).split('.')
 
   if b == '0':
-    return int_to_s(num)
+    if type(num) == int_class:
+      return int_to_s(num)
+    return int_str_to_s(a)
 
   parts = b.split('e')
   if len(parts) == 1:

@@ -43,6 +43,9 @@ test(-63, '-11')
 test(-3843, '-zz')
 test(-3844, '-100')
 
+# floating number without fractional part
+test(1.0, '1')
+
 # positive floating number
 test(1.5, '1.5')
 test(3.1, '3.1')
