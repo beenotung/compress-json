@@ -36,3 +36,13 @@ def decode_str(string):
   if prefix == 's|':
     return string[2:]
   return string
+
+def encode_bool(b):
+  return 'b|T' if b else 'b|F'
+
+def decode_bool(s):
+  if s == 'b|T':
+    return True
+  if s == 'b|F':
+    return False
+  return not not s

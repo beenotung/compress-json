@@ -1,6 +1,6 @@
-from encode import encode_num, encode_str
+from encode import encode_bool, encode_num, encode_str
 from number import num_to_s
-from type import dict_class, list_class, int_class, float_class, str_class
+from type import dict_class, list_class, int_class, float_class, str_class, bool_class
 from config import config
 
 class InMemoryMemory:
@@ -47,6 +47,9 @@ def add_value(mem, o, parent):
       v = add_value(mem, value, o)
       acc += '|' + v
     return get_value_key(mem, acc)
+
+  if data_class == bool_class:
+    return get_value_key(mem, encode_bool(o))
 
   if data_class == int_class or data_class == float_class:
     return get_value_key(mem, encode_num(o))

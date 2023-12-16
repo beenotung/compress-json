@@ -1,4 +1,4 @@
-from encode import decode_key, decode_num, decode_str
+from encode import decode_bool, decode_key, decode_num, decode_str
 from memory import make_memory, add_value, mem_to_values
 from type import int_class, float_class, str_class
 
@@ -29,6 +29,8 @@ def decode(values, key):
 
   if data_class == str_class:
     prefix = v[0:2]
+    if prefix == 'b|':
+      return decode_bool(v)
     if prefix == 'o|':
       return decode_object(values, v)
     if prefix == 'n|':
