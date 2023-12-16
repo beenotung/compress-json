@@ -1,9 +1,9 @@
 from encode import decode_bool, decode_key, decode_num, decode_str
-from memory import make_memory, add_value, mem_to_values
-from type import int_class, float_class, str_class
+from memory import InMemoryMemory, add_value, mem_to_values
+from type import int_class, float_class, str_class, list_class
 
 def compress(o):
-  mem = make_memory()
+  mem = InMemoryMemory()
   root = add_value(mem, o, parent=None)
   values = mem_to_values(mem)
   return [values, root]
