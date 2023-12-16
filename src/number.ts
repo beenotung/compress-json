@@ -90,7 +90,7 @@ export function num_to_s(num: number): string {
   }
   let c: string | undefined
   if (b) {
-    [b, c] = b.split('e')
+    ;[b, c] = b.split('e')
   }
   a = int_str_to_s(a)
   b = reverse(b)

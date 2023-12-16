@@ -1,13 +1,13 @@
 import { mkdirSync, writeFileSync } from 'fs'
+import { join } from 'path'
 import { compress, decompress } from '../src/core'
 import { sample } from './sample'
-import { join } from 'path'
 
 export function test() {
   const data = sample()
   let last_decompressed: any
 
-  let dir = 'samples'
+  const dir = 'samples'
   mkdirSync(dir, { recursive: true })
   let i = 0
   function test_data(name: string, data: any) {
