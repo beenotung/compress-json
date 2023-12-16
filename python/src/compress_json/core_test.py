@@ -8,7 +8,7 @@ import json
 # %%
 ## generate samples
 
-os.system("npx ts-node ../test/core-test.ts")
+os.system("npx ts-node ../../../test/core-test.ts")
 
 
 # %%
