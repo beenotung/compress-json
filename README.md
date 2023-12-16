@@ -7,7 +7,7 @@ Store JSON data in space efficient manner.
 
 Inspired by [compressed-json](https://github.com/okunishinishi/node-compressed-json) and [jsonpack](https://github.com/rgcl/jsonpack).
 
-This library is optimized to reduce represent json object in compact format, which can save network bandwidth and disk space.
+This library is optimized to compress json object in compact format, which can save network bandwidth and disk space.
 It is not optimized for writing nor querying throughput.
 Although the reduced IO may speed up usage of lmdb on frequently redundant data, that is not the design goal.
 
