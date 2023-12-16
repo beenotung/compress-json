@@ -28,8 +28,9 @@ def add_value(mem, o, parent):
 
   if data_class == list_class:
     acc = 'a'
+    empty_value = '' if is_sparse_array(o) else '_'
     for v in o:
-      key = '_' if v is None else add_value(mem, v, o)
+      key = empty_value if v is None else add_value(mem, v, o)
       acc += '|' + key
     if acc == 'a':
       acc = 'a|'
@@ -67,3 +68,6 @@ def get_value_key(mem, value):
 
 def mem_to_values(mem):
   return mem
+
+def is_sparse_array(array):
+  return len(array) > 0 and array[-1] is not None
