@@ -12,71 +12,6 @@ os.system("npx ts-node ../../../test/core-test.ts")
 
 
 # %%
-## helper functions for testing
-
-int_class = type(1)
-float_class = type(1.0)
-
-def is_same(a, b):
-  a_class = type(a)
-  b_class = type(b)
-
-  if a_class == int_class and b_class == float_class:
-    a = float(a)
-  elif a_class == float_class and b_class == int_class:
-    b = float(b)
-
-  return a == b
-
-# %%
-## test is_same
-
-def test_is_same(name, a, b, expected_match = False):
-  if not is_same(a, a):
-    raise Exception(f"is_same failed for {name} test case (a, a)")
-
-  if not is_same(b, b):
-    raise Exception(f"is_same failed for {name} test case (b, b)")
-
-  if not is_same(a, b) == expected_match:
-    raise Exception(f"is_same failed for {name} test case (a, b)")
-
-  if not is_same(b, a) == expected_match:
-    raise Exception(f"is_same failed for {name} test case (b, a)")
-
-  print(f"[is_same] {name} pass")
-
-test_is_same('int', 1, 2)
-test_is_same('float', 1.1, 1.2)
-test_is_same('array', [1,2], [1,3])
-test_is_same(
-  'dict',
-  {'id': 1, 'name': 'alice'},
-  {'id': 2, 'name': 'bob'}
-)
-test_is_same(
-  'complex',
-  [
-    {'id': 1, 'name': 'alice'},
-    {'id': 2, 'name': 'bob'}
-  ],
-  [
-    {'id': 1, 'name': 'alice'},
-    {'id': 3, 'name': 'charlie'}
-  ],
-)
-test_is_same(
-  name='int vs float (same value)',
-  expected_match=True,
-  a=1,
-  b=1.0,
-)
-test_is_same('int vs float (diff value)', 1, 1.5)
-test_is_same('int vs string', 1, '1')
-test_is_same('array vs string', [1], '1')
-
-
-# %%
 ## test the implementation against sample
 
 from core import compress, decompress
@@ -94,7 +29,7 @@ def load_sample(file):
 
     # Test compress
     compressed = compress(data)
-    if not is_same(compressed, expect_compressed):
+    if compressed != expect_compressed:
       print("data:", data)
       print("compressed:", compressed)
       print("expect_compressed:", expect_compressed)
@@ -102,7 +37,7 @@ def load_sample(file):
 
     # Test decompress
     decompressed = decompress(compressed)
-    if not is_same(decompressed, data):
+    if decompressed != data:
       print("data:", data)
       print("decompressed:", decompressed)
       raise Exception("decompressed mismatch")
