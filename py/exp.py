@@ -90,17 +90,18 @@ def load_sample(file):
     data = sample['data']
     expect_compressed = sample['compressed']
 
-    # Test the implementation
     print(f"case {i}: {name}")
-    compressed = compress(data)
-    decompressed = decompress(compressed)
 
-    # Check if matched
+    # Test compress
+    compressed = compress(data)
     if not is_same(compressed, expect_compressed):
       print("data:", data)
       print("compressed:", compressed)
       print("expect_compressed:", expect_compressed)
       raise Exception("compressed mismatch")
+
+    # Test decompress
+    decompressed = decompress(compressed)
     if not is_same(decompressed, data):
       print("data:", data)
       print("decompressed:", decompressed)
