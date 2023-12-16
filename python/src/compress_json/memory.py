@@ -3,7 +3,45 @@ from number import num_to_s
 from type import dict_class, list_class, int_class, float_class, str_class, bool_class
 from config import config
 
-class InMemoryStore:
+class Store:
+
+  def add(self, value: any) -> None:
+    raise Exception("not implemented")
+
+  def __iter__(self):
+    raise Exception("not implemented")
+
+  def to_array(self) -> list:
+    raise Exception("not implemented")
+
+class Cache():
+
+  def get_value(self, key: str) -> any:
+    raise Exception("not implemented")
+
+  def get_schema(self, key: str) -> any:
+    raise Exception("not implemented")
+
+  def set_value(self, key: str, value: any) -> None:
+    raise Exception("not implemented")
+
+  def set_schema(self, key: str, value: any) -> None:
+    raise Exception("not implemented")
+
+  def has_value(self, key: str) -> bool:
+    raise Exception("not implemented")
+
+  def has_scheme(self, key: str) -> bool:
+    raise Exception("not implemented")
+
+class Memory:
+  def __init__(self):
+    self.store = '_to_be_implemented_'
+    self.cache = '_to_be_implemented_'
+    self.key_count = '_to_be_implemented_'
+    pass
+
+class InMemoryStore(Store):
   def __init__(self):
     self.mem = []
 
@@ -16,7 +54,7 @@ class InMemoryStore:
   def to_array(self) -> list:
     return self.mem
 
-class InMemoryCache:
+class InMemoryCache(Cache):
   def __init__(self):
     self.schema_mem = {}
     self.value_mem = {}
@@ -39,7 +77,7 @@ class InMemoryCache:
   def has_scheme(self, key: str) -> bool:
     return key in self.schema_mem
 
-class InMemoryMemory:
+class InMemoryMemory(Memory):
   def __init__(self):
     self.store = InMemoryStore()
     self.cache = InMemoryCache()
