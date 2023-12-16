@@ -112,7 +112,7 @@ def int_to_s(integer):
     integer //= N
   return ''.join(acc[::-1])
 
-def s_to_int(s):
+def s_to_int(s) -> int:
   acc = 0
   pow = 1
   for i in range(len(s) - 1, -1, -1):

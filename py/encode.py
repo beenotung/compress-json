@@ -10,7 +10,7 @@ def decode_num(s):
   return s_to_num(s)
 
 
-def decode_key(key):
+def decode_key(key) -> int:
   if type(key) == int_class:
     return key
 
