@@ -10,13 +10,20 @@ function assert(condition: boolean) {
 const user: any = {
   name: 'Alice',
   role: undefined,
+  after_undefined: undefined,
+  last: 'value',
 }
 trimUndefined(user)
 if ('role' in user) {
   console.error('undefined field is not removed')
   process.exit(1)
 }
+if ('after_undefined' in user) {
+  console.error('continuous undefined fields are not removed')
+  process.exit(1)
+}
 assert(user.name === 'Alice')
+assert(user.last === 'value')
 
 const a = {
   name: 'a',

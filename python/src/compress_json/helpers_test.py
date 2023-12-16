@@ -8,12 +8,18 @@ def assertion(condition: bool):
 user = {
   'name': 'Alice',
   'role': None,
+  'after_undefined': None,
+  'last': 'value',
 }
 trim_undefined(user)
 if 'role' in user:
   print("undefined field is not removed")
   exit(1)
+if 'after_undefined' in user:
+  print("continuous undefined fields are not removed")
+  exit(1)
 assertion(user['name'] == 'Alice')
+assertion(user['last'] == 'value')
 
 a = {
   'name': 'a',
