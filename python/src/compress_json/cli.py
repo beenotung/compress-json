@@ -50,7 +50,7 @@ Usage Example:
       data = json.load(fd)
 
   result = fn(data)
-  json.dump(result, sys.stdout)
+  json.dump(result, sys.stdout, separators=(',', ':'))
 
 if __name__ == "__main__":
   main()
