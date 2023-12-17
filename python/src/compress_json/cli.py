@@ -3,12 +3,8 @@ import json
 from core import compress, decompress
 
 def main():
-  argv = sys.argv
+  argv = sys.argv[1:]
   length = len(argv)
-
-  if length > 0 and argv[0].endswith('.py'):
-    argv.pop(0)
-    length -= 1
 
   def print_help():
     print("""
