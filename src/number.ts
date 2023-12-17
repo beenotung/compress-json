@@ -107,7 +107,6 @@ export function num_to_s(num: number): string {
         c = c.slice(1)
         break
     }
-    c = reverse(c)
     c = int_str_to_s(c)
     str += c
   }
@@ -149,7 +148,6 @@ export function s_to_num(s: string): number {
       c = c.slice(1)
     }
     c = s_to_int_str(c)
-    c = reverse(c)
     str += neg ? -c : +c
   }
   return +str

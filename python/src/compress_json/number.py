@@ -49,7 +49,6 @@ def num_to_s(num):
     elif c[0] == '-':
       string += '-'
       c = c[1:]
-    c = c[::-1]
     c = int_str_to_s(c)
     string += c
 
@@ -94,7 +93,6 @@ def s_to_num(s):
       neg = True
       c = c[1:]
     c = s_to_int_str(c)
-    c = c[::-1]
     if neg:
       string += '-' + c
     else:
