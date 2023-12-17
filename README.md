@@ -26,7 +26,7 @@ Although the reduced IO may speed up usage of lmdb on frequently redundant data,
 ## All Implementations
 - Javascript/Typescript: [source](https://github.com/beenotung/compress-json) / [package](https://www.npmjs.com/package/compress-json)
 - PHP: [source](https://github.com/inkrot/php-compress-json) / [package](https://packagist.org/packages/inkrot/php-compress-json)
-- Python: [source](https://github.com/beenotung/compress-json/tree/python/python) / [package](https://pypi.org/project/compress-json-python)
+- Python: [source](https://github.com/beenotung/compress-json/tree/master/python) / [package](https://pypi.org/project/compress-json-python)
 - C#: (TODO)
 
 ## Installation
