@@ -1,1 +1,1 @@
-from compress_json import cli
+from .cli import main

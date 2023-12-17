@@ -1,6 +1,6 @@
 import sys
 import json
-from core import compress, decompress
+from .core import compress, decompress
 
 def main():
   argv = sys.argv[1:]

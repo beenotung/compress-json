@@ -1,5 +1,5 @@
-from number import num_to_s, s_to_int, s_to_num
-from type import int_class, float_class
+from .number import num_to_s, s_to_int, s_to_num
+from .type import int_class, float_class
 
 
 def encode_num(num):

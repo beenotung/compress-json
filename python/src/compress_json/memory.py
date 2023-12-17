@@ -1,7 +1,7 @@
-from encode import encode_bool, encode_num, encode_str
-from number import num_to_s
-from type import dict_class, list_class, int_class, float_class, str_class, bool_class
-from config import config
+from .encode import encode_bool, encode_num, encode_str
+from .number import num_to_s
+from .type import dict_class, list_class, int_class, float_class, str_class, bool_class
+from .config import config
 
 class Store:
 

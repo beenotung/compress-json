@@ -1,6 +1,6 @@
-from encode import decode_bool, decode_key, decode_num, decode_str
-from memory import InMemoryMemory, add_value, mem_to_values
-from type import int_class, float_class, str_class, list_class
+from .encode import decode_bool, decode_key, decode_num, decode_str
+from .memory import InMemoryMemory, add_value, mem_to_values
+from .type import int_class, float_class, str_class, list_class
 
 def compress(o):
   mem = InMemoryMemory()

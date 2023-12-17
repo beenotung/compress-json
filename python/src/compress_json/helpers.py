@@ -1,4 +1,4 @@
-from type import dict_class
+from .type import dict_class
 
 def trim_undefined(object):
   keys_to_remove = []

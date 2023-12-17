@@ -1,4 +1,4 @@
-from type import int_class
+from .type import int_class
 
 i_to_s = ''
 
