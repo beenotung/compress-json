@@ -1,3 +1,4 @@
 python_modules
 .vscode
 dist/
+*.egg-info
