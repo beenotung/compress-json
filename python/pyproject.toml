@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "compress-json-python"
-version = "2.1.3"
+version = "3.0.0"
 description = "convert JSON data to space efficient format"
 readme = "README.md"
 authors = [{ name = "Beeno Tung", email = "aabbcc1241@yahoo.com.hk" }]
