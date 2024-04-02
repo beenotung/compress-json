@@ -33,7 +33,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "@beenotung/tslib": "^16.20.1",
+    "@beenotung/tslib": "^23.4.0",
     "@types/node": "*",
     "compressed-json": "^1.0.15",
     "jsonpack": "^1.1.5",
