@@ -15,15 +15,15 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "npm run rawtest",
+    "test": "run-s format build test-case",
     "clean": "rimraf dist",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "postformat": "tslint -p . --fix",
-    "prebuild": "npm run clean",
-    "build": "tsc -p tsconfig.build.json",
-    "pretest": "npm run format && npm run build",
-    "rawtest": "ts-node test/index.ts",
-    "prepublishOnly": "npm run rawtest && npm run build"
+    "format": "run-s prettier tslint",
+    "prettier": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "tslint": "tslint -p . --fix",
+    "build": "run-s clean tsc",
+    "tsc": "tsc -p tsconfig.build.json",
+    "test-case": "ts-node test/index.ts",
+    "prepublishOnly": "run-s test-case build"
   },
   "directories": {
     "test": "test"
@@ -37,6 +37,7 @@
     "@types/node": "*",
     "compressed-json": "^1.0.15",
     "jsonpack": "^1.1.5",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
     "ts-node": "^10.9.2",
