@@ -31,7 +31,6 @@
     ],
     "jsdoc-format": false,
     "space-before-function-paren": false,
-    "no-invalid-this": true,
     "callable-types": true,
     "class-name": true,
     "comment-format": [
