@@ -115,7 +115,7 @@ export function num_to_s(num: number): string {
 
 export function int_str_to_s(int_str: string): string {
   const num = +int_str
-  if (num.toString() === int_str && num + 1 != num && num - 1 != num) {
+  if (num.toString() === int_str && num + 1 !== num && num - 1 !== num) {
     return int_to_s(num)
   }
   return ':' + big_int_to_s(BigInt(int_str))
