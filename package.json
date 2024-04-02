@@ -14,14 +14,18 @@
   "license": "BSD-2-Clause",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "browser": "./bundle.js",
+  "unpkg": "./bundle.js",
   "scripts": {
     "test": "run-s format build test-case",
     "clean": "rimraf dist",
     "format": "run-s prettier tslint",
     "prettier": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "tslint": "tslint -p . --fix",
-    "build": "run-s clean tsc",
+    "build": "run-s clean tsc bundle minify",
     "tsc": "tsc -p tsconfig.build.json",
+    "bundle": "esbuild --bundle src/browser.ts --outfile=bundle.js",
+    "minify": "esbuild --bundle --minify src/browser.ts --outfile=bundle.min.js",
     "test-case": "ts-node test/index.ts",
     "prepublishOnly": "run-s test-case build"
   },
@@ -31,11 +35,11 @@
   "files": [
     "dist"
   ],
-  "dependencies": {},
   "devDependencies": {
     "@beenotung/tslib": "^23.4.0",
     "@types/node": "*",
     "compressed-json": "^1.0.15",
+    "esbuild": "^0.20.2",
     "jsonpack": "^1.1.5",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",

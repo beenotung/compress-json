@@ -5,6 +5,8 @@ pnpm-debug.log
 dist/
 .cache/
 *.tgz
+bundle.js
+bundle.min.js
 
 data/
 *.zip

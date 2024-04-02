@@ -3,6 +3,7 @@
 Store JSON data in space efficient manner.
 
 [![npm Package Version](https://img.shields.io/npm/v/compress-json.svg)](https://www.npmjs.com/package/compress-json)
+[![Minified Package Size](https://img.shields.io/bundlephobia/min/compress-json)](https://bundlephobia.com/package/compress-json)
 [![npm Package Downloads](https://img.shields.io/npm/dm/compress-json)](https://www.npmtrends.com/compress-json)
 
 Inspired by [compressed-json](https://github.com/okunishinishi/node-compressed-json) and [jsonpack](https://github.com/rgcl/jsonpack).
@@ -33,9 +34,56 @@ Although the reduced IO may speed up usage of lmdb on frequently redundant data,
 
 ## Installation
 
+You can install `compress-json` from npm:
+
 ```bash
 npm i -S compress-json
 ```
+
+Then import from typescript using named import or star import:
+
+```typescript
+import { compress, decompress } from 'compress-json'
+import * as compressJSON from 'compress-json'
+```
+
+Or import from javascript as commonjs module:
+
+```javascript
+var compressJSON = require('compress-json')
+```
+
+You can also load `compress-json` directly in html via CDN:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/compress-json@3/bundle.js"></script>
+<script>
+  console.log(compressJSON)
+  /*
+  {
+    // for direct usage
+    compress,
+    decompress,
+
+    // for custom wrapper
+    decode,
+    addValue,
+
+    // to remove undefined object fields
+    trimUndefined,
+    trimUndefinedRecursively,
+  }
+  */
+</script>
+```
+
+If you do not intend to inspect the source of `compress-json`, you can load the minified version for smaller file size:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/compress-json@3/bundle.min.js"></script>
+```
+
+Details see [index.ts](./src/index.ts)
 
 ## Usage
 
