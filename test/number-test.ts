@@ -15,7 +15,7 @@ export function test() {
     1.2e-9,
     1.2e-10,
     // to test overflow bug reported in https://github.com/beenotung/compress-json/issues/16
-    1/12,
+    1 / 12,
   ]
   for (const x of xs) {
     const s = num_to_s(x)
