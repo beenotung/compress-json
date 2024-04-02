@@ -5,6 +5,7 @@ export function sample() {
   const longNum = 9876543210.123456
   const sparse = []
   sparse[10] = 1
+  // prettier-ignore
   return {
     floating: [
       0.12371134020618557,

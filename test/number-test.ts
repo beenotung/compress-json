@@ -1,6 +1,7 @@
 import { num_to_s, s_to_num } from '../src/number'
 
 export function test() {
+  // prettier-ignore
   const xs = [
     1234567890,
     987654321,
