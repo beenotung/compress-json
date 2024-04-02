@@ -11,9 +11,11 @@ export function test() {
     0.12371134020618557,
     // to test exponential number suggested in https://github.com/beenotung/compress-json/issues/9
     1.23456789123789e22,
-    // to exponential bug reported in https://github.com/beenotung/compress-json/issues/12
+    // to test exponential bug reported in https://github.com/beenotung/compress-json/issues/12
     1.2e-9,
     1.2e-10,
+    // to test overflow bug reported in https://github.com/beenotung/compress-json/issues/16
+    1/12,
   ]
   for (const x of xs) {
     const s = num_to_s(x)
