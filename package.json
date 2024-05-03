@@ -14,7 +14,7 @@
   "license": "BSD-2-Clause",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "browser": "./bundle.js",
+  "jsdelivr": "./bundle.js",
   "unpkg": "./bundle.js",
   "scripts": {
     "test": "run-s format build test-case",
