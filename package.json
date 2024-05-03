@@ -12,6 +12,14 @@
     "url": "https://beeno-tung.surge.sh"
   },
   "license": "BSD-2-Clause",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "browser": "./bundle.js"
+    }
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "jsdelivr": "./bundle.js",
