@@ -13,6 +13,7 @@ data/
 
 # debug files
 data.json
+expected.json
 compressed.json
 decompressed.json
 

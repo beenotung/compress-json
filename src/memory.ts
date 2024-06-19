@@ -1,5 +1,5 @@
 import { config } from './config'
-import { throwUnknownDataType } from './debug'
+import { throwUnknownDataType, throwUnsupportedData } from './debug'
 import { encodeBool, encodeNum, encodeStr } from './encode'
 import { num_to_s } from './number'
 
@@ -193,6 +193,18 @@ export function addValue(mem: Memory, o: any, parent: Parent | undefined): Key {
     case 'boolean':
       return getValueKey(mem, encodeBool(o))
     case 'number':
+      if (Number.isNaN(o)) {
+        if (config.error_on_nan) {
+          throwUnsupportedData('[number NaN]')
+        }
+        return '' // treat it as null like JSON.stringify
+      }
+      if (Number.POSITIVE_INFINITY === o || Number.NEGATIVE_INFINITY === o) {
+        if (config.error_on_infinite) {
+          throwUnsupportedData('[number Infinity]')
+        }
+        return '' // treat it as null like JSON.stringify
+      }
       return getValueKey(mem, encodeNum(o))
     case 'string':
       return getValueKey(mem, encodeStr(o))

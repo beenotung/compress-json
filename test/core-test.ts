@@ -10,12 +10,16 @@ export function test() {
   const dir = 'samples'
   mkdirSync(dir, { recursive: true })
   let i = 0
-  function test_data(name: string, data: any) {
+  function test_data(name: string, data: any, expected = data) {
     const compressed = compress(data)
     const decompressed = decompress(compressed)
-    console.dir({ name, data, compressed, decompressed }, { depth: 20 })
-    if (JSON.stringify(data) !== JSON.stringify(decompressed)) {
+    console.dir(
+      { name, data, expected, compressed, decompressed },
+      { depth: 20 },
+    )
+    if (JSON.stringify(expected) !== JSON.stringify(decompressed)) {
       writeFileSync('data.json', JSON.stringify(data, null, 2))
+      writeFileSync('expected.json', JSON.stringify(expected, null, 2))
       writeFileSync('compressed.json', JSON.stringify(compressed, null, 2))
       writeFileSync('decompressed.json', JSON.stringify(decompressed, null, 2))
       throw new Error('compress/decompress mismatch')
@@ -29,6 +33,7 @@ export function test() {
           i,
           name,
           data,
+          expected,
           compressed,
         },
         null,
@@ -98,6 +103,13 @@ export function test() {
     throw new Error('compress/decompress mismatch')
   }
   test_data('array with multiple null elements', [null, null])
+
+  // to test OME bug reported in https://github.com/beenotung/compress-json/issues/21
+  test_data(
+    'invalid numbers',
+    [NaN, Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY],
+    [null, null, null],
+  )
 
   console.log('pass:', __filename.replace(__dirname + '/', ''))
 }
