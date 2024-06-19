@@ -7,3 +7,6 @@ export { addValue, Memory, Store, Cache } from './memory'
 
 /* to remove undefined object fields */
 export { trimUndefined, trimUndefinedRecursively } from './helpers'
+
+/* to config */
+export { config } from './config'

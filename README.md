@@ -204,6 +204,19 @@ trimUndefinedRecursively(b)
 compress(b) // now it will not throw error since b.a.extra is deleted
 ```
 
+## Config
+
+```typescript
+import { config } from 'compress-json'
+
+// default will not sort the object key
+config.sort_key = true
+
+// default will convert into null silently like JSON.stringify
+config.error_on_nan = true
+config.error_on_infinite = true
+```
+
 ## Benchmark
 
 Test file: [compress-test.ts](./test/compress-test.ts)
