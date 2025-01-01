@@ -1,7 +1,7 @@
 #!/usr/bin/env ts-node
 // tslint:disable no-var-requires
 import { jsonToString } from '@beenotung/tslib/json'
-import { startTimer } from '@beenotung/tslib/node'
+import { startTimer } from '@beenotung/tslib/timer'
 import fs from 'fs'
 import path from 'path'
 import { compress, decompress } from '../src/core'
