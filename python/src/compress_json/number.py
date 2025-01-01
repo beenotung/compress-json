@@ -22,7 +22,18 @@ def num_to_s(num):
   if num < 0:
     return '-' + num_to_s(-num)
 
-  [a, b] = str(float(num)).split('.')
+  parts = str(float(num)).split('.')
+  if len(parts) == 1:
+    if 'e' in parts[0]:
+      [a] = parts
+      # e.g. 2e-13 -> 2.0e-13
+      [a1, a2] = a.split('e')
+      a = a1
+      b = '0e' + a2
+    else:
+      return int_to_s(num)
+  else:
+    [a, b] = parts
 
   if b == '0':
     if type(num) == int_class:
@@ -109,6 +120,13 @@ def int_to_s(integer):
   acc = []
   while integer != 0:
     i = integer % N
+    # check if integer is indeed an exponential big number
+    if type(i) == float:
+      int_val = int(i)
+      float_val = float(int_val)
+      if i != float_val:
+        raise Exception(f"precision loss when int_to_s({integer})")
+      i = int_val
     c = i_to_s[i]
     acc.append(c)
     integer //= N

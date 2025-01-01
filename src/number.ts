@@ -86,7 +86,14 @@ export function num_to_s(num: number): string {
   }
   let [a, b] = num.toString().split('.')
   if (!b) {
-    return int_to_s(num)
+    if (a.includes('e')) {
+      // e.g. 2e-13 -> 2.0e-13
+      const [a1, a2] = a.split('e')
+      a = a1
+      b = '0e' + a2
+    } else {
+      return int_to_s(num)
+    }
   }
   let c: string | undefined
   if (b) {

@@ -14,6 +14,9 @@ export function test() {
     // to test exponential bug reported in https://github.com/beenotung/compress-json/issues/12
     1.2e-9,
     1.2e-10,
+    // to test exponential bug reported in https://github.com/beenotung/compress-json/issues/22
+    1e21,
+    2e-13,
     // to test overflow bug reported in https://github.com/beenotung/compress-json/issues/16
     1 / 12,
   ]
