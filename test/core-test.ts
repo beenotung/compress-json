@@ -89,6 +89,12 @@ export function test() {
     propertyIsEnumerable: 6,
   })
 
+  // test for short string reported in https://github.com/inkrot/php-compress-json/issues/1
+  // when the string is shorter than the prefix we're checking, will it overflow?
+  test_data('short string', '')
+  test_data('short string', 'p')
+  test_data('short string', 'pp')
+
   // test for https://github.com/beenotung/compress-json/issues/5
   test_data('A string appears as both key and value', {
     'any-1': {
