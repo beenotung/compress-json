@@ -68,5 +68,10 @@
   "bugs": {
     "url": "https://github.com/beenotung/compress-json/issues"
   },
-  "homepage": "https://github.com/beenotung/compress-json#readme"
+  "homepage": "https://github.com/beenotung/compress-json#readme",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
 }
