@@ -23,6 +23,7 @@ This package is a python implementation of [compress-json](https://github.com/be
 - Javascript/Typescript: [source](https://github.com/beenotung/compress-json) / [package](https://www.npmjs.com/package/compress-json)
 - PHP: [source](https://github.com/inkrot/php-compress-json) / [package](https://packagist.org/packages/inkrot/php-compress-json)
 - Python: [source](https://github.com/beenotung/compress-json/tree/master/python) / [package](https://pypi.org/project/compress-json-python)
+- Rust: [source](https://github.com/web-mech/compress-json-rs) / [package](https://crates.io/crates/compress-json-rs)
 - C#: (TODO)
 
 ## Installation
