@@ -185,7 +185,64 @@ compressed = [
 **Compressed json**: (562 characters without white-spaces)
 
 ```json
-[["count", "names", "cities", "a|0|1|2", "n|5", "New York", "London", "Paris", "Beijing", "Moscow", "a|5|6|7|8|9", "id", "name", "countryName", "location", "localityType", "a|B|C|D|E|F", "n|1", "USA", "latitude", "longitude", "a|J|K", "n|e.2Xkv", "n|-1C.28G", "o|L|M|N", "BIG_CITY", "o|G|H|5|I|O|P", "n|2", "UK", "n|p.dz7", "n|-0.2vFR", "o|L|T|U", "COUNTRY_CAPITAL", "o|G|R|6|S|V|W", "n|3", "France", "n|m.1XNq", "n|2.2kQz", "o|L|a|b", "o|G|Y|7|Z|c|W", "n|4", "China", "n|d.F7F", "n|1s.bVh", "o|L|g|h", "o|G|e|8|f|i|W", "Russia", "n|t.1xtN", "n|b.3lHA", "o|L|l|m", "o|G|4|9|k|n|W", "a|Q|X|d|j|o", "o|3|4|A|p"], "q"]
+[
+  [
+    "count",
+    "names",
+    "cities",
+    "a|0|1|2",
+    "n|5",
+    "New York",
+    "London",
+    "Paris",
+    "Beijing",
+    "Moscow",
+    "a|5|6|7|8|9",
+    "id",
+    "name",
+    "countryName",
+    "location",
+    "localityType",
+    "a|B|C|D|E|F",
+    "n|1",
+    "USA",
+    "latitude",
+    "longitude",
+    "a|J|K",
+    "n|e.2Xkv",
+    "n|-1C.28G",
+    "o|L|M|N",
+    "BIG_CITY",
+    "o|G|H|5|I|O|P",
+    "n|2",
+    "UK",
+    "n|p.dz7",
+    "n|-0.2vFR",
+    "o|L|T|U",
+    "COUNTRY_CAPITAL",
+    "o|G|R|6|S|V|W",
+    "n|3",
+    "France",
+    "n|m.1XNq",
+    "n|2.2kQz",
+    "o|L|a|b",
+    "o|G|Y|7|Z|c|W",
+    "n|4",
+    "China",
+    "n|d.F7F",
+    "n|1s.bVh",
+    "o|L|g|h",
+    "o|G|e|8|f|i|W",
+    "Russia",
+    "n|t.1xtN",
+    "n|b.3lHA",
+    "o|L|l|m",
+    "o|G|4|9|k|n|W",
+    "a|Q|X|d|j|o",
+    "o|3|4|A|p"
+  ],
+  "q"
+]
 ```
 
 In this example, compression saves 25% of characters. However, the more complex and repetitive the structure, the more characters can be saved.
