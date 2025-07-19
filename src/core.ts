@@ -78,6 +78,9 @@ export function decode(values: Values, key: Key) {
         case 'o|':
           return decodeObject(values, v)
         case 'n|':
+        case 'N|+':
+        case 'N|-':
+        case 'N|0':
           return decodeNum(v)
         case 'a|':
           return decodeArray(values, v)

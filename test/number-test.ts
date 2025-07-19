@@ -1,3 +1,4 @@
+import { decodeNum, encodeNum } from '../src/encode'
 import { num_to_s, s_to_num } from '../src/number'
 
 export function test() {
@@ -19,6 +20,8 @@ export function test() {
     2e-13,
     // to test overflow bug reported in https://github.com/beenotung/compress-json/issues/16
     1 / 12,
+    // to test recurring and non terminating number reported in https://github.com/beenotung/compress-json/issues/23
+    1 / 3,
   ]
   for (const x of xs) {
     const s = num_to_s(x)
@@ -29,6 +32,23 @@ export function test() {
     }
     console.log(x, '->', s)
   }
+
+  // to test infinity number reported in https://github.com/beenotung/compress-json/issues/23
+  let edge_values = [
+    1 / 0, // Infinity
+    -1 / 0, // -Infinity
+    0 / 0, // NaN
+  ]
+  for (let value of edge_values) {
+    let str = encodeNum(value)
+    let decoded = decodeNum(str)
+    if (decoded.toString() !== value.toString()) {
+      console.error({ value, str, decoded })
+      throw new Error('incorrect encode/decode')
+    }
+    console.log(value, '->', str)
+  }
+
   console.log('pass:', __filename.replace(__dirname + '/', ''))
 }
 

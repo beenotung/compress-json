@@ -1,11 +1,24 @@
 from .number import num_to_s, s_to_int, s_to_num
 from .type import int_class, float_class
+import math
 
 
 def encode_num(num):
+  if num == float('inf'):
+    return 'N|+'
+  if num == float('-inf'):
+    return 'N|-'
+  if math.isnan(num):
+    return 'N|0'
   return 'n|' + num_to_s(num)
 
 def decode_num(s):
+  if s == 'N|+':
+    return float('inf')
+  if s == 'N|-':
+    return float('-inf')
+  if s == 'N|0':
+    return float('nan')
   s = s.replace('n|', '')
   return s_to_num(s)
 

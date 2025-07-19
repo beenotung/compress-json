@@ -25,6 +25,16 @@ Although the reduced IO may speed up usage of lmdb on frequently redundant data,
   - leveldb (sync mode)
   - custom adapter
 
+### Special Values
+
+- `null` is encoded as `''` (empty string)
+- `undefined` is converted to `null` and encoded as `''` (empty string)
+- `true` is encoded as `b|T`
+- `false` is encoded as `b|F`
+- `Infinity` is encoded as `N|+`
+- `-Infinity` is encoded as `N|-`
+- `NaN` is encoded as `N|0`
+
 ## All Implementations
 
 - Javascript/Typescript: [source](https://github.com/beenotung/compress-json) / [package](https://www.npmjs.com/package/compress-json)

@@ -2,6 +2,9 @@ import { Key } from './memory'
 import { num_to_s, s_to_int, s_to_num } from './number'
 
 export function encodeNum(num: number): string {
+  if (num === Infinity) return 'N|+'
+  if (num === -Infinity) return 'N|-'
+  if (Number.isNaN(num)) return 'N|0'
   const a = 'n|' + num_to_s(num)
   return a
   // let b = num.toString()
@@ -9,6 +12,14 @@ export function encodeNum(num: number): string {
 }
 
 export function decodeNum(s: string): number {
+  switch (s) {
+    case 'N|+':
+      return Infinity
+    case 'N|-':
+      return -Infinity
+    case 'N|0':
+      return NaN
+  }
   s = s.replace('n|', '')
   return s_to_num(s)
 }

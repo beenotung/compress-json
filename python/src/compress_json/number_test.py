@@ -1,4 +1,6 @@
 from number import num_to_s, s_to_num
+from encode import encode_num, decode_num
+import math
 
 def test(num, expected_s):
   s = num_to_s(num)
@@ -73,3 +75,21 @@ test(2e-13, '2.0.-D')
 
 # floating number requiring bigint in fraction part
 test(0.032989690721649485, "0.:hD3gasB3de")
+
+# test special floating-point values (Infinity, -Infinity, NaN)
+edge_values = [
+  float('inf'),   # Infinity
+  float('-inf'),  # -Infinity
+  float('nan'),   # NaN
+]
+
+for value in edge_values:
+  encoded = encode_num(value)
+  decoded = decode_num(encoded)
+
+  if str(decoded) != str(value):
+    raise Exception(f"[special value test fail] value: {value}, encoded: {encoded}, decoded: {decoded}")
+
+  print(f"[pass] {value} -> {encoded}")
+
+print("[pass] number_test.py")

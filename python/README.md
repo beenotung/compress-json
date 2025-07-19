@@ -14,6 +14,16 @@ This library is optimized to compress json object in compact format, which can s
 - Numbers are encoded in base62 format (0-9A-Za-z)
 - Support custom backend for memory store and cache
 
+### Special Values
+
+- `null` is encoded as `''` (empty string)
+- `undefined` is converted to `null` and encoded as `''` (empty string)
+- `True` is encoded as `b|T`
+- `False` is encoded as `b|F`
+- `float('inf')` is encoded as `N|+`
+- `float('-inf')` is encoded as `N|-`
+- `float('nan')` is encoded as `N|0`
+
 ## Multi Language Implementation
 
 This package is a python implementation of [compress-json](https://github.com/beenotung/compress-json). It is fully compatible with the npm package so the data compressed by either side can be decompressed by another side.
