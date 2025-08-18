@@ -1,6 +1,6 @@
 {
   "name": "compress-json",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "convert JSON data to space efficient format",
   "keywords": [
     "json",
