@@ -34,14 +34,14 @@ export function test() {
   }
 
   // to test infinity number reported in https://github.com/beenotung/compress-json/issues/23
-  let edge_values = [
+  const edge_values = [
     1 / 0, // Infinity
     -1 / 0, // -Infinity
     0 / 0, // NaN
   ]
-  for (let value of edge_values) {
-    let str = encodeNum(value)
-    let decoded = decodeNum(str)
+  for (const value of edge_values) {
+    const str = encodeNum(value)
+    const decoded = decodeNum(str)
     if (decoded.toString() !== value.toString()) {
       console.error({ value, str, decoded })
       throw new Error('incorrect encode/decode')
