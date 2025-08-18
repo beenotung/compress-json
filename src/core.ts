@@ -91,7 +91,7 @@ export function decode(values: Values, key: Key) {
   return throwUnknownDataType(v)
 }
 
-export function decompress(c: Compressed) {
+export function decompress<TReturn = any>(c: Compressed): TReturn {
   const [values, root] = c
   return decode(values, root)
 }
