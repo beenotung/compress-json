@@ -71,22 +71,28 @@ export function decode(values: Values, key: Key) {
     case 'number':
       return v
     case 'string':
-      const prefix = v[0] + v[1]
-      switch (prefix) {
-        case 'b|':
-          return decodeBool(v)
-        case 'o|':
-          return decodeObject(values, v)
-        case 'n|':
-        case 'N|+':
-        case 'N|-':
-        case 'N|0':
-          return decodeNum(v)
-        case 'a|':
-          return decodeArray(values, v)
-        default:
-          return decodeStr(v)
+      if (v[1] === '|') {
+        switch (v[0]) {
+          case 'b':
+            return decodeBool(v)
+          case 'o':
+            return decodeObject(values, v)
+          case 'n':
+            return decodeNum(v)
+          case 'N': {
+            switch(v[2]) {
+              case '+':
+              case '-':
+              case '0':
+                return decodeNum(v)
+            }
+            break
+          }
+          case 'a':
+            return decodeArray(values, v)
+        }
       }
+      return decodeStr(v)
   }
   return throwUnknownDataType(v)
 }
