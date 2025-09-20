@@ -1,3 +1,4 @@
+// tslint:disable:no-console
 import { shuffle } from '@beenotung/tslib/array'
 import { compress, decode } from '../src/core'
 import { decode as decode2 } from '../src/core2'
@@ -13,12 +14,12 @@ function test() {
   const compressed = compress(data)
   console.timeEnd('compress')
 
-  let [values, root] = compressed
+  const [values, root] = compressed
 
   let v1 = 0
   let v2 = 0
   let t0 = 0
-  let batch = 1
+  const batch = 1
   for (let i = 0; ; i++) {
     t0 = performance.now()
     for (let i = 0; i < batch; i++) {
@@ -46,13 +47,13 @@ function test() {
     console.log('v1', v1)
     console.log('v2', v2)
 
-    let speedup = v1 / v2
+    const speedup = v1 / v2
     console.log('speedup', speedup)
   }
 }
 
 function sample(n: number) {
-  let data = new Array(n)
+  const data = new Array(n)
   for (let i = 0; i < n; i++) {
     data[i] = [Infinity, -Infinity, NaN, i + 1][i % 4]
   }
