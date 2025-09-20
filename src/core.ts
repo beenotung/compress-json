@@ -1,5 +1,5 @@
 import { throwUnknownDataType } from './debug'
-import { decodeBool, decodeKey, decodeStr } from './encode'
+import { decodeKey, decodeStr } from './encode'
 import {
   addValue,
   Key,

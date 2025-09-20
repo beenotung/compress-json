@@ -1,5 +1,4 @@
 // tslint:disable:no-console
-import { shuffle } from '@beenotung/tslib/array'
 import { compress, decode } from '../src/core'
 import { decode as decode2 } from '../src/core2'
 
