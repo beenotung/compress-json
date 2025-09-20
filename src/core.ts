@@ -88,6 +88,8 @@ export function decode(values: Values, key: Key) {
                 return -Infinity
               case '0': // N|0
                 return NaN
+              default:
+                return throwUnknownDataType(v)
             }
             break
           }
