@@ -11,20 +11,19 @@ export function encodeNum(num: number): string {
   if (Number.isNaN(num)) {
     return 'N|0'
   }
-  const a = 'n|' + num_to_s(num)
-  return a
-  // let b = num.toString()
-  // return a.length < b.length ? a : num
+  return 'n|' + num_to_s(num)
 }
 
 export function decodeNum(s: string): number {
-  switch (s) {
-    case 'N|+':
-      return Infinity
-    case 'N|-':
-      return -Infinity
-    case 'N|0':
-      return NaN
+  if (s.length === 3 && s[0] === 'N' && s[1] === '|') {
+    switch (s[2]) {
+      case '+':
+        return Infinity
+      case '-':
+        return -Infinity
+      case '0':
+        return NaN
+    }
   }
   s = s.replace('n|', '')
   return s_to_num(s)
@@ -35,34 +34,35 @@ export function decodeKey(key: Key): number {
 }
 
 export function encodeBool(b: boolean): string {
-  // return 'b|' + bool_to_s(b)
   return b ? 'b|T' : 'b|F'
 }
 
 export function decodeBool(s: string): boolean {
-  switch (s) {
-    case 'b|T':
-      return true
-    case 'b|F':
-      return false
+  if (s.length === 3 && s[0] === 'b' && s[1] === '|') {
+    switch (s[2]) {
+      case 'T':
+        return true
+      case 'F':
+        return false
+    }
   }
   return !!s
 }
 
 export function encodeStr(str: string): string {
-  const prefix = str[0] + str[1]
-  switch (prefix) {
-    case 'b|':
-    case 'o|':
-    case 'n|':
-    case 'a|':
-    case 's|':
-      str = 's|' + str
+  if (str[1] === '|') {
+    switch (str[0]) {
+      case 'b':
+      case 'o':
+      case 'n':
+      case 'a':
+      case 's':
+        return 's|' + str
+    }
   }
   return str
 }
 
 export function decodeStr(s: string): string {
-  const prefix = s[0] + s[1]
-  return prefix === 's|' ? s.substr(2) : s
+  return s[0] === 's' && s[1] === '|' ? s.substr(2) : s
 }
