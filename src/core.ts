@@ -80,7 +80,7 @@ export function decode(values: Values, key: Key) {
           case 'n':
             return decodeNum(v)
           case 'N': {
-            switch(v[2]) {
+            switch (v[2]) {
               case '+':
               case '-':
               case '0':
