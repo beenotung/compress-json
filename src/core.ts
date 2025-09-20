@@ -72,6 +72,16 @@ export function decode(values: Values, key: Key) {
     case 'number':
       return v
     case 'string':
+      /**
+       * - `b|T` -> true
+       * - `b|F` -> false
+       * - `o|` -> object
+       * - `n|xxx` -> number
+       * - `N|+` -> +Infinity
+       * - `N|-` -> -Infinity
+       * - `N|0` -> NaN
+       * - `a|` -> array
+       */
       if (v[1] === '|') {
         switch (v[0]) {
           case 'b': {
