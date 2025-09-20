@@ -14,14 +14,21 @@ export function encodeNum(num: number): string {
   return 'n|' + num_to_s(num)
 }
 
+/**
+ * @deprecated optimized by inlining into decode() function
+ * - `N|+` -> +Infinity
+ * - `N|-` -> -Infinity
+ * - `N|0` -> NaN
+ * - `n|xxx` -> number
+ */
 export function decodeNum(s: string): number {
   if (s.length === 3 && s[0] === 'N' && s[1] === '|') {
     switch (s[2]) {
-      case '+':
+      case '+': // N|+
         return Infinity
-      case '-':
+      case '-': // N|-
         return -Infinity
-      case '0':
+      case '0': // N|0
         return NaN
     }
   }

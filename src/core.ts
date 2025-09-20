@@ -1,5 +1,5 @@
 import { throwUnknownDataType } from './debug'
-import { decodeBool, decodeKey, decodeNum, decodeStr } from './encode'
+import { decodeBool, decodeKey, decodeStr } from './encode'
 import {
   addValue,
   Key,
@@ -82,10 +82,12 @@ export function decode(values: Values, key: Key) {
             return s_to_num(v.slice(2))
           case 'N': {
             switch (v[2]) {
-              case '+':
-              case '-':
-              case '0':
-                return decodeNum(v)
+              case '+': // N|+
+                return Infinity
+              case '-': // N|-
+                return -Infinity
+              case '0': // N|0
+                return NaN
             }
             break
           }

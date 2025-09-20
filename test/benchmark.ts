@@ -54,7 +54,7 @@ function test() {
 function sample(n: number) {
   let data = new Array(n)
   for (let i = 0; i < n; i++) {
-    data[i] = i + 1
+    data[i] = [Infinity, -Infinity, NaN, i + 1][i % 4]
   }
-  return shuffle(data)
+  return data
 }
