@@ -74,8 +74,16 @@ export function decode(values: Values, key: Key) {
     case 'string':
       if (v[1] === '|') {
         switch (v[0]) {
-          case 'b':
-            return decodeBool(v)
+          case 'b': {
+            switch (v[2]) {
+              case 'T': // b|T
+                return true
+              case 'F': // b|F
+                return false
+              default:
+                return throwUnknownDataType(v)
+            }
+          }
           case 'o':
             return decodeObject(values, v)
           case 'n': // n|xxx
