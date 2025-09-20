@@ -8,6 +8,7 @@ import {
   memToValues,
   Value,
 } from './memory'
+import { s_to_num } from './number'
 
 export type Values = Value[]
 export type Compressed = [Values, Key] // [values, root]
@@ -77,8 +78,8 @@ export function decode(values: Values, key: Key) {
             return decodeBool(v)
           case 'o':
             return decodeObject(values, v)
-          case 'n':
-            return decodeNum(v)
+          case 'n': // n|xxx
+            return s_to_num(v.slice(2))
           case 'N': {
             switch (v[2]) {
               case '+':

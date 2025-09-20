@@ -25,8 +25,7 @@ export function decodeNum(s: string): number {
         return NaN
     }
   }
-  s = s.replace('n|', '')
-  return s_to_num(s)
+  return s_to_num(s.slice(2))
 }
 
 export function decodeKey(key: Key): number {
