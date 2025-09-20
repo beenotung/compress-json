@@ -91,7 +91,6 @@ export function decode(values: Values, key: Key) {
               default:
                 return throwUnknownDataType(v)
             }
-            break
           }
           case 'a':
             return decodeArray(values, v)
