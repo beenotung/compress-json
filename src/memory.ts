@@ -194,14 +194,29 @@ export function addValue(mem: Memory, o: any, parent: Parent | undefined): Key {
       return getValueKey(mem, encodeBool(o))
     case 'number':
       if (Number.isNaN(o)) {
+        if (config.preserve_nan) {
+          return getValueKey(mem, 'N|0')
+        }
         if (config.error_on_nan) {
           throwUnsupportedData('[number NaN]')
         }
         return '' // treat it as null like JSON.stringify
       }
-      if (Number.POSITIVE_INFINITY === o || Number.NEGATIVE_INFINITY === o) {
+      if (Number.POSITIVE_INFINITY === o) {
+        if (config.preserve_infinite) {
+          return getValueKey(mem, 'N|+')
+        }
         if (config.error_on_infinite) {
           throwUnsupportedData('[number Infinity]')
+        }
+        return '' // treat it as null like JSON.stringify
+      }
+      if (Number.NEGATIVE_INFINITY === o) {
+        if (config.preserve_infinite) {
+          return getValueKey(mem, 'N|-')
+        }
+        if (config.error_on_infinite) {
+          throwUnsupportedData('[number -Infinity]')
         }
         return '' // treat it as null like JSON.stringify
       }

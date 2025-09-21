@@ -224,6 +224,10 @@ import { config } from 'compress-json'
 config.sort_key = true
 
 // default will convert into null silently like JSON.stringify
+config.preserve_nan = true
+config.preserve_infinite = true
+
+// default will silently convert into null like JSON.stringify
 config.error_on_nan = true
 config.error_on_infinite = true
 ```
