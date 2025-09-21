@@ -32,7 +32,7 @@ function test() {
     }
     v2 += performance.now() - t0
 
-    if (i == 0) {
+    if (i === 0) {
       // warmup
       v1 = 0
       v2 = 0
