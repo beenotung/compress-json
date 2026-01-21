@@ -117,6 +117,9 @@ export function test() {
     [null, null, null],
   )
 
+  // test for https://github.com/inkrot/php-compress-json/pull/5
+  test_data('string zero in array', ['0'])
+
   console.log('pass:', __filename.replace(__dirname + '/', ''))
 }
 
